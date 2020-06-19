@@ -1,5 +1,12 @@
 # ChatBox
-Raphael a modifié ce texte
+
 #
-coucou
+Membres du groupe 
+
+Yoann ANAGO
+Mostafa OMRANE
+Raphael KOSKAS
+Sofiane SERKESTI
+Jeremy TOURARI
+
 
