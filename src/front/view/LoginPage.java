@@ -1,6 +1,9 @@
+// Test de commit...
+
 package front.view;
 
 import back.server.SimpleClient;
+
 import front.controller.ChatRoomUI;
 import front.controller.Login;
 import front.model.ChatRoom;
@@ -100,6 +103,7 @@ public class LoginPage extends JFrame {
 	}
 
 	public static void main(String[] args) {
+		/*
 		LoginPage letsGo = new LoginPage();
 		letsGo.setView();
 
@@ -117,6 +121,7 @@ public class LoginPage extends JFrame {
 		chatRoomUI.getChatRoomList().get(0).removeUser(user);
 		chatRoomUI.getChatRoomList().get(0).removeUser(user2);
 		chatRoomUI.printChatRoomList();
+		*/
 	}
 }
 
