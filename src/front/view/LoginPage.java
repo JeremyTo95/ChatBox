@@ -1,6 +1,8 @@
 package front.view;
 
+import back.server.SimpleClient;
 import front.controller.ChatRoomUI;
+import front.controller.Login;
 import front.model.ChatRoom;
 import front.model.Message;
 import front.model.User;
@@ -101,6 +103,8 @@ public class LoginPage extends JFrame {
 		LoginPage letsGo = new LoginPage();
 		letsGo.setView();
 
+		SimpleClient sc = new SimpleClient();
+		Login.initSocket(sc);
 		ChatRoomUI chatRoomUI = new ChatRoomUI();
 		User user = new User("Jérémy", "Tourari", "Sparta");
 		User user2 = new User("Sofiane", "Serkesti", "JakenPon");

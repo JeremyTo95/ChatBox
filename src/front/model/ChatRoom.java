@@ -1,11 +1,12 @@
 package front.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-public class ChatRoom {
+public class ChatRoom implements Serializable {
     UUID idChatRoom;
     String titleRoom;
     List<User> userList;
