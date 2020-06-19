@@ -5,6 +5,8 @@ import front.model.Constants;
 import front.model.Message;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -19,16 +21,11 @@ public class Server extends AbstractServer {
                 System.out.println("[SERVER] Waiting for client connection...");
                 Socket client = serverSocket.accept();
                 System.out.println("[SERVER]Connected to client : " + ip);
-                new ServerThread(client).start();
+                Thread t = new ServerThread(client);
+                t.start();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    @Override
-    public void sendMessage(Message message) { }
-
-    @Override
-    public Message getMessage() { return null; }
 }

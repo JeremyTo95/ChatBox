@@ -12,10 +12,8 @@ public class Client extends AbstractServer {
     private ObjectOutputStream output;
     private ObjectInputStream input;
     private Socket socket;
-    private String ip;
 
     public void connect(String ip) {
-        this.ip = ip;
         try {
             socket = new Socket(ip, Constants.PORT_SERVER);
             output = new ObjectOutputStream(socket.getOutputStream());
@@ -25,35 +23,29 @@ public class Client extends AbstractServer {
         }
     }
 
-    @Override
-    public void sendMessage(Message message) {
+    public void sendMessage(String ip, Message message) {
         try {
-            if (ip != null) {
-                socket = new Socket(ip, Constants.PORT_SERVER);
-                output = new ObjectOutputStream(socket.getOutputStream());
-                input  = new ObjectInputStream(socket.getInputStream());
+            socket = new Socket(ip, Constants.PORT_SERVER);
+            output = new ObjectOutputStream(socket.getOutputStream());
+            input  = new ObjectInputStream(socket.getInputStream());
 
-                output.writeObject(message);
-            }
+            System.out.println("message to send : \n" + message);
+            output.writeObject(message);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public Message getMessage() {
+    public void getMessage(String ip) {
         try {
-            if (ip != null) {
-                socket = new Socket(ip, Constants.PORT_SERVER);
-                output = new ObjectOutputStream(socket.getOutputStream());
-                input  = new ObjectInputStream(socket.getInputStream());
+            socket = new Socket(ip, Constants.PORT_SERVER);
+            output = new ObjectOutputStream(socket.getOutputStream());
+            input  = new ObjectInputStream(socket.getInputStream());
 
-                Message message = (Message) input.readObject();
-                return message;
-            }
+            Message message = (Message) input.readObject();
+            System.out.println("Received message : " + message);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return null;
     }
 }

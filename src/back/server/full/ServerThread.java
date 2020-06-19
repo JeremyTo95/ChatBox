@@ -1,6 +1,7 @@
 package back.server.full;
 
 import front.model.Message;
+import front.model.User;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,11 +26,17 @@ public class ServerThread extends Thread {
 
             Message message = (Message) input.readObject();
             System.out.println(message);
+            output.writeObject(message);
+            sendToAll(message);
 
         } catch(IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void sendToAll(Message message) {
+
     }
 }
