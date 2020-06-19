@@ -1,9 +1,9 @@
 package front.view;
 
-import back.server.SimpleClient;
+import back.server.full.Client;
 import front.controller.ChatRoomUI;
-import front.controller.Login;
 import front.model.ChatRoom;
+import front.model.Constants;
 import front.model.Message;
 import front.model.User;
 
@@ -103,8 +103,6 @@ public class LoginPage extends JFrame {
 		LoginPage letsGo = new LoginPage();
 		letsGo.setView();
 
-		SimpleClient sc = new SimpleClient();
-		Login.initSocket(sc);
 		ChatRoomUI chatRoomUI = new ChatRoomUI();
 		User user = new User("Jérémy", "Tourari", "Sparta");
 		User user2 = new User("Sofiane", "Serkesti", "JakenPon");
@@ -117,6 +115,15 @@ public class LoginPage extends JFrame {
 		chatRoomUI.getChatRoomList().get(0).removeUser(user);
 		chatRoomUI.getChatRoomList().get(0).removeUser(user2);
 		chatRoomUI.printChatRoomList();
+
+		Client client = new Client();
+
+		client.connect(Constants.IP_SERVER);
+		Message message = new Message(user.getId(), "Hello (from Jérémy)");
+		Message message2 = new Message(user2.getId(), "Hello (from Sofiane)");
+		client.sendMessage(message);
+		client.sendMessage(message2);
+
 	}
 }
 

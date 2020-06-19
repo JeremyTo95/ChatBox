@@ -1,4 +1,4 @@
-package back.server;
+package back.server.simple;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.List;
 
-import static back.server.Server.getRandomName;
+import static back.server.simple.Server.getRandomName;
 
 public class ClientHandler implements Runnable {
     private Socket              client;

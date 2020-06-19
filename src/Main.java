@@ -1,4 +1,4 @@
-import back.server.SimpleClient;
+//import back.server.SimpleClient;
 import front.controller.ChatRoomUI;
 import front.controller.Login;
 import front.model.ChatRoom;
@@ -11,8 +11,8 @@ public class Main {
 		LoginPage letsGo = new LoginPage();
 		letsGo.setView();
 
-		SimpleClient sc = new SimpleClient();
-		Login.initSocket(sc);
+//		SimpleClient sc = new SimpleClient();
+//		Login.initSocket(sc);
 		ChatRoomUI chatRoomUI = new ChatRoomUI();
 		User user = new User("Jérémy", "Tourari", "Sparta");
 		User user2 = new User("Sofiane", "Serkesti", "JakenPon");

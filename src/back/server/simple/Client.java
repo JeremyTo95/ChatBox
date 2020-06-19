@@ -1,4 +1,4 @@
-package back.server;
+package back.server.simple;
 
 import front.model.Constants;
 

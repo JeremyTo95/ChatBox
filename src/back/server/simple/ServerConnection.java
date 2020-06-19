@@ -1,4 +1,4 @@
-package back.server;
+package back.server.simple;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,13 +13,12 @@ public class ServerConnection implements Runnable {
 
     public ServerConnection(Socket socket) throws IOException {
         this.socket = socket;
-        this.input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        this.input  = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.output = new PrintWriter(socket.getOutputStream(), true);
     }
 
     @Override
     public void run() {
-
         String serverResponse = null;
         try {
             while (true) {
