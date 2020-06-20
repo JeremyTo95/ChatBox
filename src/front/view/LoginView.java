@@ -1,5 +1,3 @@
-// Test de commit...
-
 package front.view;
 
 import back.server.SimpleClient;
@@ -15,7 +13,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 
-public class LoginPage extends JFrame {
+public class LoginView extends JFrame {
 	private JLabel welcomeTextLabel;
 	private JButton signInButton;
 	private JButton signUpButton;
@@ -26,8 +24,9 @@ public class LoginPage extends JFrame {
 	private JButton submitButton;
 	
 	
-	public LoginPage() {
+	public LoginView() {
 		super();
+		this.setView();
 	}
 	
 	public void setView() {	
@@ -101,9 +100,9 @@ public class LoginPage extends JFrame {
 		b.setForeground(textColor);
 		return b;
 	}
-
+/*
 	public static void main(String[] args) {
-		/*
+		
 		LoginPage letsGo = new LoginPage();
 		letsGo.setView();
 
@@ -121,8 +120,8 @@ public class LoginPage extends JFrame {
 		chatRoomUI.getChatRoomList().get(0).removeUser(user);
 		chatRoomUI.getChatRoomList().get(0).removeUser(user2);
 		chatRoomUI.printChatRoomList();
-		*/
-	}
+		
+	}*/
 }
 
 /*

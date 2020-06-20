@@ -1,19 +1,21 @@
 import back.server.SimpleClient;
-import front.controller.ChatRoomUI;
-import front.controller.Login;
+import front.controller.ChatRoomController;
+import front.controller.LoginController;
 import front.model.ChatRoom;
 import front.model.Message;
 import front.model.User;
-import front.view.LoginPage;
+import front.view.ChatRoomView;
+import front.view.LoginView;
 
 public class Main {
 	public static void main(String[] args) {
-		LoginPage letsGo = new LoginPage();
+		LoginView letsGo = new LoginView();
 		letsGo.setView();
-
+		
+		/*
 		SimpleClient sc = new SimpleClient();
-		Login.initSocket(sc);
-		ChatRoomUI chatRoomUI = new ChatRoomUI();
+		LoginController.initSocket(sc);
+		ChatRoomController chatRoomUI = new ChatRoomController();
 		User user = new User("Jérémy", "Tourari", "Sparta");
 		User user2 = new User("Sofiane", "Serkesti", "JakenPon");
 		ChatRoom chatRoom = new ChatRoom("ChatRoom first test", user);
@@ -25,5 +27,8 @@ public class Main {
 		chatRoomUI.getChatRoomList().get(0).removeUser(user);
 		chatRoomUI.getChatRoomList().get(0).removeUser(user2);
 		chatRoomUI.printChatRoomList();
+		*/
+		ChatRoomView letsGo2 = new ChatRoomView();
+		letsGo2.run();
 	}
 }
