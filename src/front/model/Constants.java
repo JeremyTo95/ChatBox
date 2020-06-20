@@ -33,7 +33,7 @@ public class Constants {
         userList.add(new User("Sofiane", "Serkesti", "JakenPon", "password"));
         userList.add(new User("Mostafa", "Omrane", "vegaPunk", "password"));
         userList.add(new User("Yoann", "Anago", "Gims", "password"));
-        userList.add(new User("Raphaël", "KOSKAS", "RaphiStark", "password"));
+        userList.add(new User("Raphaël", "KOSKAS", "RaphyStark", "password"));
 
         return userList;
     }
