@@ -38,7 +38,7 @@ public class Client extends AbstractServer {
         }
     }
 
-    public void getMessage(String ip) {
+    /*public void getMessage(String ip) {
         try {
             System.out.println("query : get all messages");
             output.writeObject(Constants.QUERY_GET_MESSAGES);
@@ -48,5 +48,5 @@ public class Client extends AbstractServer {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

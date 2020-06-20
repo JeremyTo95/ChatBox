@@ -1,42 +1,45 @@
 package front.view;
 
-import front.controller.ChatRoomController;
+import front.controller.HomeViewController;
+import front.model.User;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 
-public class ChatRoomView extends JFrame {
-    JPanel container;
-    ChatRoomController controller;
-    JButton disconnectButton;
-    JButton addingButton;
-    JButton sendButton;
-    JLabel currentDiscussionLabel;
-    JTextField writingField;
-    DefaultListModel listDiscussionModel;
-    DefaultListModel listMessageModel;
-    JList listDiscussionArea;
-    JList listMessageArea;
-    JScrollPane listDiscussionScrollPane;
-    JScrollPane listMessageScrollPane;
+public class HomeView extends JFrame {
+    private User user;
+    private JPanel container;
+    private HomeViewController controller;
+    private JButton disconnectButton;
+    private JButton addingButton;
+    private JButton sendButton;
+    private JLabel currentDiscussionLabel;
+    private JTextField writingField;
+    private DefaultListModel listDiscussionModel;
+    private DefaultListModel listMessageModel;
+    private JList listDiscussionArea;
+    private JList listMessageArea;
+    private JScrollPane listDiscussionScrollPane;
+    private JScrollPane listMessageScrollPane;
 
-    public ChatRoomView() {
+    public HomeView(User user) {
         super();
-        this.container = new JPanel();
-        this.controller = new ChatRoomController();
-        this.disconnectButton = new JButton("Disconnect");
-        this.addingButton = new JButton("Add discussion");
-        this.sendButton = new JButton("Send");
-        this.currentDiscussionLabel = new JLabel("Select or add a discussion");
-        this.writingField = new JTextField();
-        this.listMessageModel = new DefaultListModel();
-        this.listDiscussionModel = new DefaultListModel();
-        this.listDiscussionArea = new JList(listDiscussionModel);
-        this.listMessageArea = new JList(listMessageModel);
+        this.user                     = user;
+        this.container                = new JPanel();
+        this.controller               = new HomeViewController(this);
+        this.disconnectButton         = new JButton("Disconnect");
+        this.addingButton             = new JButton("Add discussion");
+        this.sendButton               = new JButton("Send");
+        this.currentDiscussionLabel   = new JLabel("Select or add a discussion");
+        this.writingField             = new JTextField();
+        this.listMessageModel         = new DefaultListModel();
+        this.listDiscussionModel      = new DefaultListModel();
+        this.listDiscussionArea       = new JList(listDiscussionModel);
+        this.listMessageArea          = new JList(listMessageModel);
         this.listDiscussionScrollPane = new JScrollPane(listDiscussionArea);
-        this.listMessageScrollPane = new JScrollPane(listMessageArea);
+        this.listMessageScrollPane    = new JScrollPane(listMessageArea);
     }
 
     public void run() {
@@ -121,4 +124,7 @@ public class ChatRoomView extends JFrame {
         });
     }
 
+    public User getUser() {
+        return user;
+    }
 }

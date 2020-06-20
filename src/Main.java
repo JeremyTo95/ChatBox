@@ -1,4 +1,3 @@
-import front.view.ChatRoomView;
 import front.view.LoginView;
 
 public class Main {
@@ -19,7 +18,5 @@ public class Main {
          * chatRoomUI.printChatRoomList();
          */
 
-        ChatRoomView letsGo2 = new ChatRoomView();
-        letsGo2.run();
     }
 }

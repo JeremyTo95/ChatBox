@@ -1,8 +1,12 @@
 package front.view;
 
+import front.model.Constants;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LoginView extends JFrame {
     private JLabel welcomeTextLabel;
@@ -43,10 +47,6 @@ public class LoginView extends JFrame {
         signPanel.setLayout(new BoxLayout(signPanel, BoxLayout.X_AXIS));
         signPanel.setBackground(Color.PINK);
         signPanel.setBorder(blackline);
-        this.signInButton = createButton("SignIn", Color.BLUE, Color.WHITE);
-        this.signUpButton = createButton("SignUp", Color.RED, Color.WHITE);
-        signPanel.add(signInButton);
-        signPanel.add(signUpButton);
         pan.add(signPanel);
 
         JPanel loginPanel = new JPanel();
@@ -74,10 +74,8 @@ public class LoginView extends JFrame {
 
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 
-    public void clearScreen() {
-        // Rendre la page complétement blanche pour passer à la prochaine page
+        setSubmitButton();
     }
 
     public JButton createButton(String name, Color color, Color textColor) {
@@ -89,6 +87,37 @@ public class LoginView extends JFrame {
         return b;
     }
 
+    private void setSubmitButton() {
+        this.submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameField.getText();
+                String password = passwordField.getText();
+
+                for (int i = 0; i < Constants.allUsers.size(); i++) {
+                    if (Constants.allUsers.get(i).getPseudo().equals(username) && Constants.allUsers.get(i).getPassword().equals(password)) {
+                        // TODO: ENCHAINE SUR LA HOMEVIEW
+                        System.out.println("connexion : ok");
+                        Constants.currentUser = Constants.allUsers.get(i);
+                        i = Constants.allUsers.size();
+                        goToHome();
+                        dispose();
+
+                    } else {
+                        // TODO: EFFACE LES CHAMPS PASSWORD
+                        System.out.println("connexion : ko");
+                        passwordField.setText("");
+                    }
+                }
+            }
+        });
+    }
+
+    private void goToHome() {
+        this.removeAll();
+        HomeView letsGo = new HomeView(Constants.currentUser);
+        letsGo.run();
+    }
 }
 
 /*
