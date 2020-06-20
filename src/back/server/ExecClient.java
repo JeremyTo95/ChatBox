@@ -1,15 +1,17 @@
-package back.server.full;
+package back.server;
 
 import front.model.Constants;
 import front.model.Message;
 import front.model.User;
 
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 
+/**
+ * <h1>Object ExecClient</h1>
+ * This class is a test to execute the client side
+ */
 public class ExecClient {
     public static void main(String[] args) throws IOException {
         Client client = new Client();
@@ -24,7 +26,7 @@ public class ExecClient {
             String command = keyboard.readLine();
             if (command.equals("quit")) break;
             if (command.startsWith("send ")) {
-                client.sendMessage(Constants.IP_SERVER, new Message(user.getId()/*Constants.currentUser.getId()*/, command.replace("send ", "")));
+                client.sendMessage(new Message(user.getId(), command.replace("send ", "")));
             }
         }
     }

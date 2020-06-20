@@ -1,15 +1,24 @@
 package front.view;
 
 import front.controller.HomeViewController;
+import front.model.Constants;
+import front.model.Message;
 import front.model.User;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+/**
+ * <h1>Object HomeView</h1>
+ * This class is the Home UI
+ */
 public class HomeView extends JFrame {
     private User user;
+    private String ipChatRoom;
     private JPanel container;
     private HomeViewController controller;
     private JButton disconnectButton;
@@ -24,6 +33,10 @@ public class HomeView extends JFrame {
     private JScrollPane listDiscussionScrollPane;
     private JScrollPane listMessageScrollPane;
 
+    /**
+     * This constructor initalize the home view feature from a user
+     * @param user
+     */
     public HomeView(User user) {
         super();
         this.user                     = user;
@@ -42,12 +55,19 @@ public class HomeView extends JFrame {
         this.listMessageScrollPane    = new JScrollPane(listMessageArea);
     }
 
+    /**
+     * This method enable to show and configure the UI
+     */
     public void run() {
         setDefaultListModel();
         setView();
         this.addingListListener(this.listDiscussionArea);
+        setSubmitButton();
     }
 
+    /**
+     * This methode enable to show the view
+     */
     public void setView() {
         // sendPanel
         JPanel sendPanel = new JPanel();
@@ -75,6 +95,9 @@ public class HomeView extends JFrame {
         this.setFrame();
     }
 
+    /**
+     * This method define the frame
+     */
     public void setFrame() {
         this.setResizable(false);
         this.setSize(new Dimension(700, 350));
@@ -84,11 +107,20 @@ public class HomeView extends JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * This method define a panel from a LayoutManager and a background color
+     * @param p
+     * @param lm
+     * @param bg
+     */
     private void setPanel(JPanel p, LayoutManager lm, Color bg) {
         p.setLayout(lm);
         p.setBackground(bg);
     }
 
+    /**
+     * This method enable to set a default model list
+     */
     private void setDefaultListModel() {
         for (int k = 0; k < controller.getChatRoomList().size(); k++) {
             listDiscussionModel.addElement(controller.getChatRoomList().get(k));
@@ -96,11 +128,13 @@ public class HomeView extends JFrame {
         for (int i = 0; i < controller.getChatRoomList().size(); i++) {
             for (int j = 0; j < controller.getChatRoomList().get(i).getMessageList().size(); j++) {
                 listMessageModel.addElement(controller.getChatRoomList().get(i).getMessageList().get(j).getContent());
-
             }
         }
     }
 
+    /**
+     * This method enable to configure the discussion label
+     */
     private void setCurrentDiscussionLabel() {
         int currentIndex = this.listDiscussionArea.getSelectedIndex();
         ;
@@ -114,16 +148,48 @@ public class HomeView extends JFrame {
         }
     }
 
+    /**
+     * This method add a listener to the list view to get focus on a chat room
+     * @param list
+     */
     private void addingListListener(JList list) {
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting() == false) {
                     setCurrentDiscussionLabel();
+                    ipChatRoom = controller.getChatRoomList().get(list.getSelectedIndex()).getIp();
+                    System.out.println(ipChatRoom + " " + list.getSelectedIndex());
+                    Constants.client.connect(Constants.IP_SERVER);
                 }
             }
         });
     }
 
+    /**
+     * This method configure the send button to send the message to the server
+     */
+    private void setSubmitButton() {
+        this.sendButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addMessageToList();
+            }
+        });
+    }
+
+    /**
+     * This method enable to send and stock a message on the server and to show the message on the screen
+     */
+    public void addMessageToList() {
+        String msg = writingField.getText();
+        writingField.setText("");
+        Constants.client.sendMessage(new Message(user.getId(), msg));
+    }
+
+    /**
+     * Getter of the user
+     * @return
+     */
     public User getUser() {
         return user;
     }

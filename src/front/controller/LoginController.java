@@ -2,6 +2,10 @@ package front.controller;
 
 import front.model.Constants;
 
+/**
+ * <h1>Object LoginController</h1>
+ * This class is the controller of the LoginView
+ */
 public class LoginController {
     /*
         TODO: Connecter et initialiser les fonctionnalités

@@ -1,4 +1,4 @@
-package back.server.full;
+package back.server;
 
 import front.model.Constants;
 import front.model.Message;
@@ -8,6 +8,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+/**
+ * <h1>Object Client</h1>
+ * This class creates the client of socket which communicate to the server
+ */
+
 public class Client extends AbstractServer {
     private Socket socket;
     private ObjectOutputStream output;
@@ -15,6 +20,11 @@ public class Client extends AbstractServer {
 
     private static ServerConnection serverConnection;
 
+    /**
+     * This method enable to connect the client to an ip
+     * @param ip of the server
+     */
+    @Override
     public void connect(String ip) {
         try {
             socket = new Socket(ip, Constants.PORT_SERVER);
@@ -29,7 +39,11 @@ public class Client extends AbstractServer {
         }
     }
 
-    public void sendMessage(String ip, Message message) {
+    /**
+     * This method enable to send message to the server
+     * @param message Message à envoyer au server
+     */
+    public void sendMessage(Message message) {
         try {
             System.out.println("message to send : \n" + message.toString());
             output.writeObject(message.toString());
@@ -37,16 +51,4 @@ public class Client extends AbstractServer {
             e.printStackTrace();
         }
     }
-
-    /*public void getMessage(String ip) {
-        try {
-            System.out.println("query : get all messages");
-            output.writeObject(Constants.QUERY_GET_MESSAGES);
-
-            Message message = (Message) input.readObject();
-            System.out.println("Message receive : " + message);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }*/
 }

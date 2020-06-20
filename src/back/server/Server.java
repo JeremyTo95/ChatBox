@@ -1,12 +1,8 @@
-package back.server.full;
+package back.server;
 
-import back.server.simple.ClientHandler;
 import front.model.Constants;
-import front.model.Message;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -14,12 +10,20 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * <h1>Object Server</h1>
+ * This class create the server of socket
+ */
 public class Server extends AbstractServer {
     private ServerSocket serverSocket;
 
     private static List<ServerThread> clients = new ArrayList<>();
     private static ExecutorService pool = Executors.newFixedThreadPool(Constants.MAX_PEOPLE);
 
+    /**
+     * This method enable to connect the client to an ip
+     * @param ip of the server
+     */
     @Override
     public void connect(String ip) {
         try {

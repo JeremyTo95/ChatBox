@@ -1,5 +1,9 @@
 import front.view.LoginView;
 
+/**
+ * <h1>Main</h1>
+ * This class is the executor of the project
+ */
 public class Main {
     public static void main(String[] args) {
         LoginView letsGo = new LoginView();
@@ -17,6 +21,5 @@ public class Main {
          * chatRoomUI.getChatRoomList().get(0).removeUser(user2);
          * chatRoomUI.printChatRoomList();
          */
-
     }
 }

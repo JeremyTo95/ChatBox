@@ -8,6 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * <h1>Object LoginView</h1>
+ * This class is the login UI
+ */
 public class LoginView extends JFrame {
     private JLabel welcomeTextLabel;
     private JButton signInButton;
@@ -18,11 +22,17 @@ public class LoginView extends JFrame {
     private JTextField passwordField;
     private JButton submitButton;
 
+    /**
+     * Constructor of the UI
+     */
     public LoginView() {
         super();
         this.setView();
     }
 
+    /**
+     * This method enable to show and configure the UI
+     */
     public void setView() {
         this.setResizable(false);
         this.setSize(new Dimension(700, 350));
@@ -78,6 +88,14 @@ public class LoginView extends JFrame {
         setSubmitButton();
     }
 
+    /**
+     * This method enable to create a button from a name, background color and text color
+     *
+     * @param name
+     * @param color
+     * @param textColor
+     * @return
+     */
     public JButton createButton(String name, Color color, Color textColor) {
         JButton b = new JButton(name);
         b.setBackground(color);
@@ -87,6 +105,9 @@ public class LoginView extends JFrame {
         return b;
     }
 
+    /**
+     * This method enable to define the logic of the submit button
+     */
     private void setSubmitButton() {
         this.submitButton.addActionListener(new ActionListener() {
             @Override
@@ -113,6 +134,9 @@ public class LoginView extends JFrame {
         });
     }
 
+    /**
+     * This method enable to run the HomeView
+     */
     private void goToHome() {
         this.removeAll();
         HomeView letsGo = new HomeView(Constants.currentUser);

@@ -1,4 +1,4 @@
-package back.server.full;
+package back.server;
 
 import front.model.Constants;
 import front.model.Message;
@@ -10,12 +10,23 @@ import java.net.Socket;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * <h1>Object ServerThread</h1>
+ * This class manage the server actions
+ */
 public class ServerThread extends Thread {
     private Socket socket;
     private List<ServerThread> clients;
     private ObjectInputStream input;
     private ObjectOutputStream output;
 
+    /**
+     * This constructor initialize the class features
+     *
+     * @param socket Socket
+     * @param clients List of clients server thread
+     * @throws IOException
+     */
     public ServerThread(Socket socket, List<ServerThread> clients) throws IOException {
         this.socket = socket;
         this.clients = clients;
@@ -23,6 +34,9 @@ public class ServerThread extends Thread {
         this.output = new ObjectOutputStream(socket.getOutputStream());
     }
 
+    /**
+     * This methode manage the server
+     */
     @Override
     public void run() {
         try {
@@ -49,6 +63,12 @@ public class ServerThread extends Thread {
         }
     }
 
+    /**
+     * This method send a message to all clients
+     *
+     * @param message
+     * @throws IOException
+     */
     private void sendToAll(Message message) throws IOException {
         for (int i = 0; i < clients.size(); i++) {
             clients.get(i).output.writeObject(message.toString());
