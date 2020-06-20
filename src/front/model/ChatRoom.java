@@ -9,7 +9,6 @@ import java.util.UUID;
 public class ChatRoom implements Serializable {
     UUID idChatRoom;
     String titleRoom;
-    User userConnected;
     List<User> userList;
     List<Message> messageList;
 
@@ -55,18 +54,18 @@ public class ChatRoom implements Serializable {
         }
     }
 
+    public List<Message> getMessageList() {
+        return this.messageList;
+    }
+
+    public String toString() {
+        return this.titleRoom;
+    }
+
     public void printChatRoom() {
         System.out.println("Title        : " + titleRoom);
         System.out.println("User list    : " + Arrays.toString(userList.toArray()));
         System.out.println("Message list : " + Arrays.toString(messageList.toArray()));
         System.out.println("____over____\n");
-    }
-    
-    public List<Message> getMessageList() {
-    	return this.messageList;
-    }
-    
-    public String toString() {
-    	return this.titleRoom;
     }
 }
