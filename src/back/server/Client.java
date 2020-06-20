@@ -73,9 +73,9 @@ public class Client extends AbstractServer {
             serverConnectionThread.interrupt();
             isRunning = false;
             System.out.println(serverConnectionThread.isInterrupted());
-            input.close();
-            output.close();
-            socket.close();
+//            input.close();
+//            output.close();
+//            socket.close();
 //            if (socket != null && serverConnectionThread == null) socket.close();
         } catch (IOException e) {
             e.printStackTrace();

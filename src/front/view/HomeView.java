@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
  */
 public class HomeView extends JFrame {
     private User user;
+    private int oldIndex;
     private String ipChatRoom;
     private JPanel container;
     private HomeViewController controller;
@@ -41,6 +42,7 @@ public class HomeView extends JFrame {
     public HomeView(User user) {
         super();
         this.user                     = user;
+        this.oldIndex                 = -1;
         this.container                = new JPanel();
         this.controller               = new HomeViewController(this);
         this.disconnectButton         = new JButton("Disconnect");
@@ -65,6 +67,7 @@ public class HomeView extends JFrame {
         setView();
         this.addingListListener(this.listDiscussionArea);
         setSubmitButton();
+        setDisconnectButton();
     }
 
     /**
@@ -159,11 +162,23 @@ public class HomeView extends JFrame {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting() == false) {
                     setCurrentDiscussionLabel();
-                    Constants.client.disconnect();
+                    System.out.println(list.getSelectedIndex());
+                    if (oldIndex != -1) Constants.client.disconnect();
                     ipChatRoom = controller.getChatRoomList().get(list.getSelectedIndex()).getIp();
                     System.out.println(ipChatRoom + " " + list.getSelectedIndex());
                     Constants.client.connect(Constants.IP_SERVER);
+                    oldIndex = list.getSelectedIndex();
                 }
+            }
+        });
+    }
+
+    private void setDisconnectButton() {
+        this.disconnectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Constants.client.disconnect();
+                System.exit(0);
             }
         });
     }
@@ -186,13 +201,11 @@ public class HomeView extends JFrame {
     public void addMessageToList() {
         String msg = writingField.getText();
         Message m = new Message(user.getId(), msg);
-//        writeNewMessage(listMessageModel, user, m);
         writingField.setText("");
         Constants.client.sendMessage(m);
     }
 
     public static void writeNewMessage(DefaultListModel listMessageModel, Message msg) {
-        System.out.println("here");
         User user = User.getUserFromId(msg.getIdAuthor());
         if (user != null) listMessageModel.addElement(user.getPseudo() + " : " + msg.getContent());
     }
