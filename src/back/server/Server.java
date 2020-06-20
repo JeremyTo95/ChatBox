@@ -18,7 +18,6 @@ public class Server extends AbstractServer {
     private ServerSocket serverSocket;
 
     private static List<ServerThread> clients = new ArrayList<>();
-    private static ExecutorService pool = Executors.newFixedThreadPool(Constants.MAX_PEOPLE);
 
     /**
      * This method enable to connect the client to an ip
@@ -34,10 +33,7 @@ public class Server extends AbstractServer {
                 System.out.println("[SERVER] Connected to client : " + ip);
 
                 ServerThread clientThread = new ServerThread(client, clients);
-                System.out.println("[SERVER] Add new client to list");
                 clients.add(clientThread);
-                System.out.println("[SERVER] Execute the thread");
-//                pool.execute(clientThread);
 
                 new Thread(clientThread).start();
             }

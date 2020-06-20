@@ -14,20 +14,28 @@ import java.io.InputStreamReader;
  */
 public class ExecClient {
     public static void main(String[] args) throws IOException {
+        User user     = new User("Jeremy", "Tourari", "Sparat", "aaaa");
         Client client = new Client();
         client.connect(Constants.IP_SERVER);
 
         BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
 
-        User user = new User("Jeremy", "Tourari", "Sparat", "aaaa");
-
-        while (true) {
+        while (client.isRunning()) {
+//        while (true) {
             System.out.print("> ");
             String command = keyboard.readLine();
             if (command.equals("quit")) break;
-            if (command.startsWith("send ")) {
+            else if (command.equals(Constants.QUERY_DISCONNECT_SOCKET)) {
+                System.out.println("Disconnecting...");
+                client.disconnect();
+                break;
+            }
+            else if (command.startsWith("send ")) {
                 client.sendMessage(new Message(user.getId(), command.replace("send ", "")));
             }
         }
+
+        System.out.println("after");
+        System.exit(0);
     }
 }

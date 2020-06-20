@@ -15,6 +15,7 @@ import java.util.UUID;
  * This class manage the server actions
  */
 public class ServerThread extends Thread {
+    private UUID id;
     private Socket socket;
     private List<ServerThread> clients;
     private ObjectInputStream input;
@@ -28,10 +29,11 @@ public class ServerThread extends Thread {
      * @throws IOException
      */
     public ServerThread(Socket socket, List<ServerThread> clients) throws IOException {
-        this.socket = socket;
+        this.id      = UUID.randomUUID();
+        this.socket  = socket;
         this.clients = clients;
-        this.input  = new ObjectInputStream(socket.getInputStream());
-        this.output = new ObjectOutputStream(socket.getOutputStream());
+        this.input   = new ObjectInputStream(socket.getInputStream());
+        this.output  = new ObjectOutputStream(socket.getOutputStream());
     }
 
     /**
@@ -40,7 +42,7 @@ public class ServerThread extends Thread {
     @Override
     public void run() {
         try {
-            while(true) {
+            while(!isInterrupted()) {
                 String query = (String) input.readObject();
                 System.out.println("[SERVER][QUERY] inputQuery : " + query + "\n");
 
@@ -48,12 +50,13 @@ public class ServerThread extends Thread {
                     Message message = Message.fromString(query);
                     System.out.println("[SERVER][DATABASE] newMessage to stock into db :\n" + message + "\n");
                     sendToAll(message);
-                    // TODO: WRITE MESSAGE INTO DATABASE
-                } else if (query.equals(Constants.QUERY_GET_MESSAGES)) {
-                    // TODO: GET ALL MESSAGES FROM DB AND SEND TO THE USER
-                    //              output.writeObject(message);
-                    Message msg = new Message(UUID.randomUUID(), "Test get all messages");
-                    sendToAll(msg);
+                    // saveMessageToDB(message); // TODO: WRITE MESSAGE INTO DATABASE
+                } else if (query.equals(Constants.QUERY_DISCONNECT_SOCKET)) {
+                    System.out.println("[SERVER][QUERY] A client has been disconnected...");
+                    for (int i = 0; i < clients.size(); i++) {
+                        if (clients.get(i).getUUID().equals(this.getUUID())) clients.remove(i);
+                    }
+                    break;
                 }
             }
         } catch(IOException e) {
@@ -71,7 +74,12 @@ public class ServerThread extends Thread {
      */
     private void sendToAll(Message message) throws IOException {
         for (int i = 0; i < clients.size(); i++) {
+            System.out.println("[SERVER][MESSAGE] sending message to client...");
             clients.get(i).output.writeObject(message.toString());
         }
+    }
+
+    public UUID getUUID() {
+        return id;
     }
 }

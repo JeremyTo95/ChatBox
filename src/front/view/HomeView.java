@@ -1,5 +1,6 @@
 package front.view;
 
+import back.server.Client;
 import front.controller.HomeViewController;
 import front.model.Constants;
 import front.model.Message;
@@ -53,6 +54,7 @@ public class HomeView extends JFrame {
         this.listMessageArea          = new JList(listMessageModel);
         this.listDiscussionScrollPane = new JScrollPane(listDiscussionArea);
         this.listMessageScrollPane    = new JScrollPane(listMessageArea);
+        Constants.client              = new Client(listMessageModel);
     }
 
     /**
@@ -157,6 +159,7 @@ public class HomeView extends JFrame {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting() == false) {
                     setCurrentDiscussionLabel();
+                    Constants.client.disconnect();
                     ipChatRoom = controller.getChatRoomList().get(list.getSelectedIndex()).getIp();
                     System.out.println(ipChatRoom + " " + list.getSelectedIndex());
                     Constants.client.connect(Constants.IP_SERVER);
@@ -182,8 +185,16 @@ public class HomeView extends JFrame {
      */
     public void addMessageToList() {
         String msg = writingField.getText();
+        Message m = new Message(user.getId(), msg);
+//        writeNewMessage(listMessageModel, user, m);
         writingField.setText("");
-        Constants.client.sendMessage(new Message(user.getId(), msg));
+        Constants.client.sendMessage(m);
+    }
+
+    public static void writeNewMessage(DefaultListModel listMessageModel, Message msg) {
+        System.out.println("here");
+        User user = User.getUserFromId(msg.getIdAuthor());
+        if (user != null) listMessageModel.addElement(user.getPseudo() + " : " + msg.getContent());
     }
 
     /**

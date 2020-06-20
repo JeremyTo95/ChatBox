@@ -3,6 +3,7 @@ package back.server;
 import front.model.Constants;
 import front.model.Message;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -14,11 +15,21 @@ import java.net.Socket;
  */
 
 public class Client extends AbstractServer {
+    private boolean isRunning;
     private Socket socket;
     private ObjectOutputStream output;
     private ObjectInputStream input;
+    private Thread serverConnectionThread;
+    private DefaultListModel listMessageModel;
 
     private static ServerConnection serverConnection;
+
+    public Client() { isRunning = true; }
+
+    public Client(DefaultListModel listMessageModel) {
+        this.isRunning = true;
+        this.listMessageModel = listMessageModel;
+    }
 
     /**
      * This method enable to connect the client to an ip
@@ -31,8 +42,9 @@ public class Client extends AbstractServer {
             output = new ObjectOutputStream(socket.getOutputStream());
             input  = new ObjectInputStream(socket.getInputStream());
 
-            serverConnection = new ServerConnection(socket, input, output);
-            new Thread(serverConnection).start();
+            serverConnection = new ServerConnection(socket, input, output, listMessageModel);
+            serverConnectionThread = new Thread(serverConnection);
+            serverConnectionThread.start();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,10 +57,32 @@ public class Client extends AbstractServer {
      */
     public void sendMessage(Message message) {
         try {
-            System.out.println("message to send : \n" + message.toString());
             output.writeObject(message.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void disconnect() {
+        try {
+//            if (serverConnectionThread != null) {
+//                serverConnectionThread.interrupt();
+//                serverConnectionThread = null;
+//            }
+            output.writeObject(Constants.QUERY_DISCONNECT_SOCKET);
+            serverConnectionThread.interrupt();
+            isRunning = false;
+            System.out.println(serverConnectionThread.isInterrupted());
+            input.close();
+            output.close();
+            socket.close();
+//            if (socket != null && serverConnectionThread == null) socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isRunning() {
+        return isRunning;
     }
 }

@@ -2,6 +2,7 @@ package front.model;
 
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -31,7 +32,23 @@ public class User implements Serializable {
 		this.password  = password;
 	}
 
-	/**
+	public User(String id, String firstName, String lastName, String pseudo, String password) {
+		this.id        = UUID.fromString(id);
+		this.firstName = firstName;
+		this.lastName  = lastName;
+		this.pseudo    = pseudo;
+		this.password  = password;
+	}
+
+    public static User getUserFromId(UUID idAuthor) {
+		List<User> allUsers = Constants.allUsers;
+		for (int i = 0; i < allUsers.size(); i++) {
+			if (allUsers.get(i).getId().equals(idAuthor)) return allUsers.get(i);
+		}
+		return null;
+	}
+
+    /**
 	 * Parse the user into a string json
 	 * @return
 	 */
