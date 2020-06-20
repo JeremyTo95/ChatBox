@@ -1,10 +1,9 @@
 package front.view;
 
-import back.server.SimpleClient;
-
+import back.server.full.Client;
 import front.controller.ChatRoomUI;
-import front.controller.Login;
 import front.model.ChatRoom;
+import front.model.Constants;
 import front.model.Message;
 import front.model.User;
 
@@ -102,12 +101,14 @@ public class LoginView extends JFrame {
 	}
 /*
 	public static void main(String[] args) {
+<<<<<<< HEAD:src/front/view/LoginView.java
 		
 		LoginPage letsGo = new LoginPage();
+=======
+		/*LoginPage letsGo = new LoginPage();
+>>>>>>> 46b1c4e89f1b075d91a6b845273f51626af17475:src/front/view/LoginPage.java
 		letsGo.setView();
 
-		SimpleClient sc = new SimpleClient();
-		Login.initSocket(sc);
 		ChatRoomUI chatRoomUI = new ChatRoomUI();
 		User user = new User("Jérémy", "Tourari", "Sparta");
 		User user2 = new User("Sofiane", "Serkesti", "JakenPon");
@@ -119,9 +120,32 @@ public class LoginView extends JFrame {
 
 		chatRoomUI.getChatRoomList().get(0).removeUser(user);
 		chatRoomUI.getChatRoomList().get(0).removeUser(user2);
+<<<<<<< HEAD:src/front/view/LoginView.java
 		chatRoomUI.printChatRoomList();
 		
 	}*/
+=======
+		chatRoomUI.printChatRoomList(); */
+
+		Client client = new Client();
+		User user = new User("Jérémy", "Tourari", "Sparta");
+		User user2 = new User("Sofiane", "Serkesti", "JakenPon");
+
+//		client.connect(Constants.IP_SERVER);
+		Message message = new Message(user.getId(), "Hello (from Jérémy)");
+		Message message2 = new Message(user2.getId(), "Hello (from Sofiane)");
+		client.sendMessage(Constants.IP_SERVER, message);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		client.sendMessage(Constants.IP_SERVER, message2);
+		client.getMessage(Constants.IP_SERVER);
+//		while (true) if (client.getMessage() != null) System.out.println("mymsg : " + client.getMessage());
+
+	}
+>>>>>>> 46b1c4e89f1b075d91a6b845273f51626af17475:src/front/view/LoginPage.java
 }
 
 /*
