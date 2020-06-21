@@ -25,9 +25,8 @@ public class ChatRoom implements Serializable {
      * Initializes the basic features of the class
      *
      * @param titleRoom Title of the room
-     * @param admin User wich create the chat room
      */
-    public ChatRoom(UUID id, String titleRoom, User admin) {
+    public ChatRoom(UUID id, String titleRoom) {
 //        this.userList    = new ArrayList<>();
 //        this.messageList = new ArrayList<>();
 
