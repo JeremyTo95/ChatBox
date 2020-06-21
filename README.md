@@ -12,9 +12,13 @@ Jeremy TOURARI
 # Ouvrir le projet sur IntelliJ IDEA
 Etape 0 : Installer IntelliJ IDEA
 Etape 1 : github du projet : https://github.com/JeremyTo95/ChatBox
-Etape 2 : copier le lien du projet dans le presse-papier
+Etape 2 : cliquer sur "clone or download" et copier le lien du projet dans le presse-papier 
+ (--> https://github.com/JeremyTo95/ChatBox.git)
 Etape 3 : ouvrir IntelliJ IDEA
 <img src="https://raw.githubusercontent.com/JeremyTo95/ChatBox/master/img/IntelliJStartUp.png" width="275">
+Etape 4 : Créer un projet vide pour le moment
+Etape 5 :
+<img src="https://raw.githubusercontent.com/JeremyTo95/ChatBox/master/img/Recuperation_projet_git.png" width="275">
 
 
 # Mise en place de la base de donnée en local
