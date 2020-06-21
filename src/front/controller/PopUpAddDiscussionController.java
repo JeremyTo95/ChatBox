@@ -65,20 +65,8 @@ public class PopUpAddDiscussionController {
     public ArrayList<String> getSelectedUUID() { return selectedUUID; }
 
     /**
-     * Setter of the selectedUUID
-     * @param selectedUUID
-     */
-    public void setSelectedUUID(ArrayList<String> selectedUUID) { this.selectedUUID = selectedUUID; }
-
-    /**
      * Getter of the view
      * @return
      */
     public PopUpAddDiscussion getView() { return view; }
-
-    /**
-     * Setter of the view
-     * @param view
-     */
-    public void setView(PopUpAddDiscussion view) { this.view = view; }
 }

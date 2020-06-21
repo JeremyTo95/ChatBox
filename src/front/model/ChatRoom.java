@@ -34,14 +34,6 @@ public class ChatRoom implements Serializable {
     }
 
     /**
-     * This method enable to print the chat room into the console
-     */
-    public void printChatRoom() {
-        System.out.println("Title        : " + titleRoom);
-        System.out.println("____over____\n");
-    }
-
-    /**
      * Getter of the id feature
      * @return
      */

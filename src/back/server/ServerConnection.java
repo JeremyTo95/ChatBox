@@ -17,7 +17,6 @@ import java.net.Socket;
 public class ServerConnection extends Thread {
     private Socket socket;
     private ObjectInputStream input;
-    private ObjectOutputStream output;
 
     private DefaultListModel listMessageModel;
     private DefaultListModel listDiscussionModel;
@@ -33,12 +32,9 @@ public class ServerConnection extends Thread {
     public ServerConnection(Socket socket, ObjectInputStream input, ObjectOutputStream output, DefaultListModel listMessageModel, DefaultListModel listDiscussionModel) {
         this.socket = socket;
         this.input  = input;
-        this.output = output;
         this.listMessageModel = listMessageModel;
         this.listDiscussionModel = listDiscussionModel;
     }
-
-    //TODO: Get data drom database and show into the chat
 
     /**
      * This method send messages from the input object stream to the user socket

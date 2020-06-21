@@ -168,36 +168,56 @@ public class HomeView extends JFrame {
             listMessageModel.addElement(user.getPseudo() + " : " + msg.getContent());
     }
 
+    /**
+     * This method clear the screen message
+     */
     private void clearScreenMessage() { listMessageModel.clear(); }
-    private void clearDiscussion() { this.listDiscussionModel.clear(); }
 
-
+    /**
+     * Getter List discussion model
+     * @return
+     */
     public DefaultListModel getListDiscussionModel() { return listDiscussionModel; }
+
+    /**
+     * Getter list message model
+     * @return
+     */
     public DefaultListModel getListMessageModel() { return listMessageModel; }
-    public JPanel getContainer() { return container; }
-    public void setContainer(JPanel container) { this.container = container; }
+
+    /**
+     * Getter refresh button
+     * @return
+     */
     public JButton getRefreshButton() { return refreshButton; }
-    public void setRefreshButton(JButton refreshButton) { this.refreshButton = refreshButton; }
+
+    /**
+     * Getter diconnect button
+     * @return
+     */
     public JButton getDisconnectButton() { return disconnectButton; }
-    public void setDisconnectButton(JButton disconnectButton) { this.disconnectButton = disconnectButton; }
+
+    /**
+     * Getter adding button
+     * @return
+     */
     public JButton getAddingButton() { return addingButton; }
-    public void setAddingButton(JButton addingButton) { this.addingButton = addingButton; }
+
+    /**
+     * Getter sending button
+     * @return
+     */
     public JButton getSendButton() { return sendButton; }
-    public void setSendButton(JButton sendButton) { this.sendButton = sendButton; }
-    public JLabel getCurrentDiscussionLabel() { return currentDiscussionLabel; }
-    public void setCurrentDiscussionLabel(JLabel currentDiscussionLabel) { this.currentDiscussionLabel = currentDiscussionLabel; }
+
+    /**
+     * Getter writting field
+     * @return
+     */
     public JTextField getWritingField() { return writingField; }
-    public void setWritingField(JTextField writingField) { this.writingField = writingField; }
+
+    /**
+     * Setter list discussion model
+     * @param listDiscussionModel
+     */
     public void setListDiscussionModel(DefaultListModel listDiscussionModel) { this.listDiscussionModel = listDiscussionModel; }
-    public void setListMessageModel(DefaultListModel listMessageModel) { this.listMessageModel = listMessageModel; }
-    public JList getListDiscussionArea() { return listDiscussionArea; }
-    public void setListDiscussionArea(JList listDiscussionArea) { this.listDiscussionArea = listDiscussionArea; }
-    public JList getListMessageArea() { return listMessageArea; }
-    public void setListMessageArea(JList listMessageArea) { this.listMessageArea = listMessageArea; }
-    public JScrollPane getListDiscussionScrollPane() { return listDiscussionScrollPane; }
-    public void setListDiscussionScrollPane(JScrollPane listDiscussionScrollPane) { this.listDiscussionScrollPane = listDiscussionScrollPane; }
-    public JScrollPane getListMessageScrollPane() { return listMessageScrollPane; }
-    public void setListMessageScrollPane(JScrollPane listMessageScrollPane) { this.listMessageScrollPane = listMessageScrollPane; }
-    public HomeViewController getController() { return controller; }
-    public void setController(HomeViewController controller) { this.controller = controller; }
 }

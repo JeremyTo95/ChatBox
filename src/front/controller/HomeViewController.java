@@ -131,13 +131,6 @@ public class HomeViewController {
 		}
 	}
 
-
-	/**
-	 * Getter of chatRoomList
-	 * @return
-	 */
-	public List<ChatRoom> getChatRoomList() { return chatRoomList; }
-
 	/**
 	 * Getter of user
 	 * @return
@@ -149,10 +142,4 @@ public class HomeViewController {
 	 * @param user
 	 */
 	public void setUser(User user) { this.user = user; }
-
-	/**
-	 * Setter of Chatroom
-	 * @param chatRoomList
-	 */
-	public void setChatRoomList(List<ChatRoom> chatRoomList) { this.chatRoomList = chatRoomList; }
 }

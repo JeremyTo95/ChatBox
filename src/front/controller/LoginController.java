@@ -38,7 +38,6 @@ public class LoginController {
 
                 for (int i = 0; i < userListDB.size(); i++) {
                     if (userListDB.get(i).getPseudo().equals(username) && userListDB.get(i).getPassword().equals(password)) {
-                        // TODO: ENCHAINE SUR LA HOMEVIEW
                         System.out.println("connexion : ok");
                         Constants.currentUser = userListDB.get(i);
                         i = userListDB.size();
@@ -46,7 +45,6 @@ public class LoginController {
                         view.dispose();
 
                     } else {
-                        // TODO: EFFACE LES CHAMPS PASSWORD
                         System.out.println("connexion : ko");
                         view.getPasswordField().setText("");
                     }
