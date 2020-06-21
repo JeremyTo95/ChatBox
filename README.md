@@ -10,8 +10,12 @@ Sofiane SERKESTI
 Jeremy TOURARI
 
 # Ouvrir le projet sur IntelliJ IDEA
-Installer IntelliJ IDEA
-Aller sur le github du projet : https://github.com/JeremyTo95/ChatBox
+Etape 0 : Installer IntelliJ IDEA
+Etape 1 : github du projet : https://github.com/JeremyTo95/ChatBox
+Etape 2 : copier le lien du projet dans le presse-papier
+Etape 3 : ouvrir IntelliJ IDEA
+<img src="https://raw.githubusercontent.com/JeremyTo95/ChatBox/master/img/IntelliJStartUp.png" width="275">
+
 
 # Mise en place de la base de donnée en local
 1ère étape : Télécharger postgreSQL
