@@ -55,4 +55,6 @@ Les données seront toutes insérées directement depuis le java.
     --> Cliquer sur File -> Project Structure puis sur Librairies, cliquer sur le "+" -> New Project Librairy -> Java .
 
     --> Dans la fenêtre suivante, séléctionner le fichier postgresql-42.2.14.jar téléchargé et cliquer sur "OK", à nouveau "OK" et une dernière fois "OK" .
-    --> Le .jar s'ajoute au projet nous pourrons utiliser ce driver JDBC pour communiquer avec notre base de donnée
+
+Le .jar est ainsi ajouté au projet
+Nous pourrons par la suite utiliser ce driver JDBC comme pont entre le code JAVA et notre base de donnée !!
