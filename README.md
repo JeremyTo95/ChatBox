@@ -63,3 +63,7 @@ Les données seront toutes insérées directement depuis le java.
 
 Le .jar est ainsi ajouté au projet
 Nous pourrons par la suite utiliser ce driver JDBC comme pont entre le code JAVA et notre base de donnée !!
+
+## Execution
+1. Executer le server ExecServer.java
+2. Executer le Main.java pour le client
