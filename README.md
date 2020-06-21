@@ -18,7 +18,7 @@ Jeremy TOURARI
 * Etape 3 : ouvrir IntelliJ IDEA
 <img src="https://raw.githubusercontent.com/JeremyTo95/ChatBox/master/img/IntelliJStartUp.png" width="275">
 * Etape 4 : Créer un projet vide pour le moment
-* Etape 5 : Cliquer dans File -> New -> From existing control version -> Git
+* Etape 5 : Aller dans File -> New -> From from version control -> Git
 
 <img src="https://raw.githubusercontent.com/JeremyTo95/ChatBox/master/img/Recuperation_projet_git.png" width="275">
 
