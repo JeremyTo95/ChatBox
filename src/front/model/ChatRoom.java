@@ -1,6 +1,9 @@
 package front.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -8,21 +11,13 @@ import java.util.UUID;
  * This class refers to the chat room object, of all chat room in our service
  */
 public class ChatRoom implements Serializable {
-    // vieux
-//    private UUID idChatRoom;
-//    private String titleRoom;
-//    private List<User> userList;
-//    private List<Message> messageList;
-
-    // neuf
     private UUID   idChatRoom;
-
     private String titleRoom;
 
     /**
      * Initializes the basic features of the class
-     *  @param titleRoom Title of the room
      *
+     * @param titleRoom Title of the room
      */
     public ChatRoom(UUID id, String titleRoom) {
 //        this.userList    = new ArrayList<>();
@@ -61,14 +56,6 @@ public class ChatRoom implements Serializable {
     }
 
     /**
-     * Getter of the title feature
-     * @return
-     */
-    public String getTitleRoom() {
-        return titleRoom;
-    }
-
-    /**
      * Setter of the id feature
      * @param idChatRoom
      */
@@ -76,11 +63,9 @@ public class ChatRoom implements Serializable {
         this.idChatRoom = idChatRoom;
     }
 
-    /**
-     * Setter of the title feature
-     * @param titleRoom
-     */
-    public void setTitleRoom(String titleRoom) {
-        this.titleRoom = titleRoom;
+
+    public String getTitleRoom() {
+        return titleRoom;
     }
+
 }

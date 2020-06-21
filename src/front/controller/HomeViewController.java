@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.UUID;
 
 import front.model.ChatRoom;
+import front.model.Constants;
+import front.model.Message;
 import front.view.HomeView;
 
 /**
@@ -34,7 +36,6 @@ public class HomeViewController {
 
 		List<ChatRoom> list = new ArrayList<>();
 		ChatRoom exemple = new ChatRoom(UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe"), "Les génies du logiciel");
-//		exemple.addMessage(new Message(Constants.currentUser.getId(), "Salut les potes"));
 		list.add(exemple);
 		list.add(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b165"), "Discussion2"));
 		list.add(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b166"), "Discussion3"));

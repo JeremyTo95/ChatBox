@@ -1,5 +1,6 @@
 package front.view;
 
+import back.db.DataBaseManager;
 import back.server.Client;
 import front.controller.HomeViewController;
 import front.model.*;
@@ -67,6 +68,7 @@ public class HomeView extends JFrame {
         this.addingListListener(this.listDiscussionArea);
         setSubmitButton();
         setDisconnectButton();
+        setAddingButton();
     }
 
     /**
@@ -129,7 +131,7 @@ public class HomeView extends JFrame {
         for (int k = 0; k < controller.getChatRoomList().size(); k++) {
             for (int l = 0; l < userRoomList.size(); l++) {
                 if (controller.getChatRoomList().get(k).getIdChatRoom().equals(userRoomList.get(l).getIdChatRoom()))
-                listDiscussionModel.addElement(controller.getChatRoomList().get(k));
+                    this.addDiscussionToModel(controller.getChatRoomList().get(k));
             }
         }
         for (int i = 0; i < controller.getChatRoomList().size(); i++) {
@@ -174,16 +176,33 @@ public class HomeView extends JFrame {
 
     private void loadScreenMessage() {
         List<Message> allMessages = Constants.allMessages;
-//        List<ChatRoom> chatRoomOfUser = UserRoom.getChatRoomByIdUser(user.getId());
         // GET ALL MESSAGE AND GET THE MESSAGE OF CHATROOM
         for (int i = 0; i < allMessages.size(); i++) {
-//            for (int j = 0; j < chatRoomOfUser.size(); j++) {
-//
-//            }
-            System.out.println("here");
             if (allMessages.get(i).getIdChatRoom().equals(Constants.chatRoom.getIdChatRoom()))
                 writeNewMessage(listMessageModel, Constants.chatRoom, allMessages.get(i));
         }
+    }
+
+    private void addDiscussionToModel(ChatRoom chat) {
+        this.listDiscussionModel.addElement(chat);
+    }
+
+    /**
+     * This method configure the adding button to open a pop up that allows you to
+     */
+    private void setAddingButton() {
+        this.addingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PopUpAddDiscussion popupDiscussion = new PopUpAddDiscussion(user);
+                popupDiscussion.run();
+                listDiscussionModel = popupDiscussion.getListDiscussionModel();
+            }
+        });
+    }
+
+    private void clearDiscussion() {
+        this.listDiscussionModel.clear();
     }
 
     private void setDisconnectButton() {
@@ -216,6 +235,8 @@ public class HomeView extends JFrame {
         Message m = new Message(user.getId(), Constants.chatRoom.getIdChatRoom(), msg);
         writingField.setText("");
         Constants.client.sendMessage(m);
+        Constants.allMessages.add(m);
+        DataBaseManager.sendMessageToDB(m);
     }
 
     /**

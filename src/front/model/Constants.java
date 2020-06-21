@@ -1,5 +1,6 @@
 package front.model;
 
+import back.db.DataBaseManager;
 import back.server.Client;
 import back.server.Server;
 import front.controller.HomeViewController;
@@ -19,21 +20,23 @@ public class Constants {
     public static final int MAX_PEOPLE   = 4;
     public static final String QUERY_GET_MESSAGES = "Send me messages";
     public static final String QUERY_DISCONNECT_SOCKET = "disconnect";
+    public static final int POPUP_WIDTH = 300;
+    public static final int POPUP_HEIGHT = 400;
     public static User currentUser = null;
     public static Client client;
     public static ChatRoom chatRoom;
 
 
-    public static final List<User>     allUsers    = initAllUser();
-    public static final List<UserRoom> allUserRoom = initAllUserRoom();
-    public static final List<Message>  allMessages = initMessageList();
+    public static final List<User>     allUsers    = DataBaseManager.getAllUsers();
+    public static final List<UserRoom> allUserRoom = DataBaseManager.getAllUserRoom();
+    public static final List<Message>  allMessages = DataBaseManager.getAllMessage();
     public static final List<ChatRoom> allChatRoom = HomeViewController.initChatRoom();
 
     /**
      * This methode initialize all the user
      * @return
      */
-    public static List<User>initAllUser() {
+    public static List<User> initAllUser() {
         List userList = new ArrayList();
 
         userList.add(new User("6952bd59-63e0-47ab-b0f1-034465b8efe8", "Jérémy", "Tourari", "Sparta", "password"));
