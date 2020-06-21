@@ -14,7 +14,7 @@ Jeremy TOURARI
 * Etape 1 : github du projet : https://github.com/JeremyTo95/ChatBox
 * Etape 2 : cliquer sur "clone or download"
  copier le lien du projet dans le presse-papier 
- (--> https://github.com/JeremyTo95/ChatBox.git)
+( --> https://github.com/JeremyTo95/ChatBox.git)
 * Etape 3 : ouvrir IntelliJ IDEA
 <img src="https://raw.githubusercontent.com/JeremyTo95/ChatBox/master/img/IntelliJStartUp.png" width="275">
 * Etape 4 : Créer un projet vide pour le moment 
