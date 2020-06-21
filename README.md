@@ -3,15 +3,15 @@ ChatBox
 
 ## Membres du groupe
 
-Yoann ANAGO
+ANAGO Yoann
 
-Mostafa OMRANE
+KOSKAS Raphael
 
-Raphael KOSKAS
+OMRANE Mostafa
 
-Sofiane SERKESTI
+SERKESTI Sofiane
 
-Jeremy TOURARI
+TOURARI Jeremy
 
 
 ## Ouvrir le projet sur IntelliJ IDEA
