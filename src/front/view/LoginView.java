@@ -1,12 +1,15 @@
 package front.view;
 
+import back.db.DataBaseManager;
 import front.model.Constants;
+import front.model.User;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * <h1>Object LoginView</h1>
@@ -109,18 +112,19 @@ public class LoginView extends JFrame {
      * This method enable to define the logic of the submit button
      */
     private void setSubmitButton() {
+        List<User> userListDB = DataBaseManager.getAllUsers();
         this.submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = usernameField.getText();
                 String password = passwordField.getText();
 
-                for (int i = 0; i < Constants.allUsers.size(); i++) {
-                    if (Constants.allUsers.get(i).getPseudo().equals(username) && Constants.allUsers.get(i).getPassword().equals(password)) {
+                for (int i = 0; i < userListDB.size(); i++) {
+                    if (userListDB.get(i).getPseudo().equals(username) && userListDB.get(i).getPassword().equals(password)) {
                         // TODO: ENCHAINE SUR LA HOMEVIEW
                         System.out.println("connexion : ok");
-                        Constants.currentUser = Constants.allUsers.get(i);
-                        i = Constants.allUsers.size();
+                        Constants.currentUser = userListDB.get(i);
+                        i = userListDB.size();
                         goToHome();
                         dispose();
 

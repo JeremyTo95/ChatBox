@@ -19,9 +19,10 @@ import java.util.List;
  */
 public class HomeView extends JFrame {
     private User user;
-    private List<UserRoom> userRoomList;
+//    private List<UserRoom> userRoomList;
     private JPanel container;
     private HomeViewController controller;
+    private JButton refreshButton;
     private JButton disconnectButton;
     private JButton addingButton;
     private JButton sendButton;
@@ -43,6 +44,7 @@ public class HomeView extends JFrame {
         this.user                     = user;
         this.container                = new JPanel();
         this.controller               = new HomeViewController(this);
+        this.refreshButton            = new JButton("Refresh");
         this.disconnectButton         = new JButton("Disconnect");
         this.addingButton             = new JButton("Add discussion");
         this.sendButton               = new JButton("Send");
@@ -54,27 +56,45 @@ public class HomeView extends JFrame {
         this.listMessageArea          = new JList(listMessageModel);
         this.listDiscussionScrollPane = new JScrollPane(listDiscussionArea);
         this.listMessageScrollPane    = new JScrollPane(listMessageArea);
-        Constants.client              = new Client(listMessageModel);
+        Constants.client              = new Client(listMessageModel, listDiscussionModel);
         Constants.client.connect(Constants.IP_SERVER);
-        this.userRoomList = UserRoom.getUserRoomByIdUser(user.getId());
+//        this.userRoomList = UserRoom.getUserRoomByIdUser(user.getId());
+        addingButton.setEnabled(false);
     }
 
     /**
      * This method enable to show and configure the UI
      */
     public void run() {
-        setDefaultListModel();
+        setDefaultListModel(controller.getChatRoomList(), UserRoom.getUserRoomByIdUser(user.getId()), listDiscussionModel);
         setView();
         this.addingListListener(this.listDiscussionArea);
+        setRefreshButton();
         setSubmitButton();
         setDisconnectButton();
         setAddingButton();
+    }
+
+    private void setRefreshButton() {
+        this.refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("refresh");
+                listDiscussionModel.clear();
+                setDefaultListModel(UserRoom.getChatRoomByIdUser(Constants.currentUser.getId()), UserRoom.getUserRoomByIdUser(user.getId()), listDiscussionModel);
+            }
+        });
     }
 
     /**
      * This methode enable to show the view
      */
     public void setView() {
+        //buttonsPanel
+        JPanel buttonsPanel = new JPanel();
+        setPanel(buttonsPanel, new GridLayout(1, 2), Color.PINK);
+        buttonsPanel.add(addingButton);
+        buttonsPanel.add(refreshButton);
         // sendPanel
         JPanel sendPanel = new JPanel();
         setPanel(sendPanel, new GridLayout(1, 2), Color.PINK);
@@ -84,7 +104,7 @@ public class HomeView extends JFrame {
         // leftPanel
         JPanel leftPanel = new JPanel();
         setPanel(leftPanel, new BoxLayout(leftPanel, BoxLayout.Y_AXIS), Color.PINK);
-        leftPanel.add(addingButton);
+        leftPanel.add(buttonsPanel);
         leftPanel.add(listDiscussionScrollPane);
         leftPanel.add(disconnectButton);
         // rightPanel
@@ -127,17 +147,12 @@ public class HomeView extends JFrame {
     /**
      * This method enable to set a default model list
      */
-    private void setDefaultListModel() {
-        for (int k = 0; k < controller.getChatRoomList().size(); k++) {
+    public static void setDefaultListModel(List<ChatRoom> chatRoomList, List<UserRoom> userRoomList, DefaultListModel listDiscussionModel) {
+        for (int k = 0; k < chatRoomList.size(); k++) {
             for (int l = 0; l < userRoomList.size(); l++) {
-                if (controller.getChatRoomList().get(k).getIdChatRoom().equals(userRoomList.get(l).getIdChatRoom()))
-                    this.addDiscussionToModel(controller.getChatRoomList().get(k));
+                if (chatRoomList.get(k).getIdChatRoom().equals(userRoomList.get(l).getIdChatRoom()))
+                    addDiscussionToModel(listDiscussionModel, chatRoomList.get(k));
             }
-        }
-        for (int i = 0; i < controller.getChatRoomList().size(); i++) {
-//            for (int j = 0; j < controller.getChatRoomList().get(i).getMessageList().size(); j++) {
-//                listMessageModel.addElement(controller.getChatRoomList().get(i).getMessageList().get(j).getContent());
-//            }
         }
     }
 
@@ -152,7 +167,7 @@ public class HomeView extends JFrame {
         if (this.listDiscussionArea.isSelectionEmpty()) {
             currentDiscussionLabel.setText("Please select or add a discussion");
         } else {
-            currentDiscussionLabel.setText(this.listDiscussionModel.getElementAt(currentIndex).toString());
+            currentDiscussionLabel.setText(Constants.chatRoom.toString());
         }
     }
 
@@ -164,18 +179,22 @@ public class HomeView extends JFrame {
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting() == false) {
-                    setCurrentDiscussionLabel();
-                    Constants.chatRoom = controller.getChatRoomList().get(list.getSelectedIndex());
-                    System.out.println(Constants.chatRoom);
-                    clearScreenMessage();
-                    loadScreenMessage();
+                    System.out.println(list.getSelectedIndex());
+                    if (list.getSelectedIndex() != -1) {
+                        Constants.chatRoom = UserRoom.getChatRoomByIdUser(user.getId()).get(list.getSelectedIndex());
+                        System.out.println(Constants.chatRoom);
+                        setCurrentDiscussionLabel();
+                        clearScreenMessage();
+                        loadScreenMessage();
+                        addingButton.setEnabled(true);
+                    }
                 }
             }
         });
     }
 
     private void loadScreenMessage() {
-        List<Message> allMessages = Constants.allMessages;
+        List<Message> allMessages = DataBaseManager.getAllMessage();
         // GET ALL MESSAGE AND GET THE MESSAGE OF CHATROOM
         for (int i = 0; i < allMessages.size(); i++) {
             if (allMessages.get(i).getIdChatRoom().equals(Constants.chatRoom.getIdChatRoom()))
@@ -183,8 +202,8 @@ public class HomeView extends JFrame {
         }
     }
 
-    private void addDiscussionToModel(ChatRoom chat) {
-        this.listDiscussionModel.addElement(chat);
+    public static void addDiscussionToModel(DefaultListModel listDiscussionModel, ChatRoom chat) {
+        listDiscussionModel.addElement(chat);
     }
 
     /**
@@ -199,10 +218,6 @@ public class HomeView extends JFrame {
                 listDiscussionModel = popupDiscussion.getListDiscussionModel();
             }
         });
-    }
-
-    private void clearDiscussion() {
-        this.listDiscussionModel.clear();
     }
 
     private void setDisconnectButton() {
@@ -235,7 +250,6 @@ public class HomeView extends JFrame {
         Message m = new Message(user.getId(), Constants.chatRoom.getIdChatRoom(), msg);
         writingField.setText("");
         Constants.client.sendMessage(m);
-        Constants.allMessages.add(m);
         DataBaseManager.sendMessageToDB(m);
     }
 
@@ -253,6 +267,8 @@ public class HomeView extends JFrame {
     private void clearScreenMessage() {
         listMessageModel.clear();
     }
+
+    private void clearDiscussion() { this.listDiscussionModel.clear(); }
 
     /**
      * Getter of the user

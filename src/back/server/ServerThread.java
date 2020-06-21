@@ -2,6 +2,7 @@ package back.server;
 
 import front.model.Constants;
 import front.model.Message;
+import front.model.UserRoom;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -57,6 +58,9 @@ public class ServerThread extends Thread {
                         if (clients.get(i).getUUID().equals(this.getUUID())) clients.remove(i);
                     }
                     break;
+                } else if (query.equals(Constants.QUERY_ADD_NEW_DISCUSSION)) {
+                    System.out.println("[SERVER][QUERY] A new discussion has been created...");
+                    notifNewDiscussionGroup();
                 }
             }
         } catch(IOException e) {
@@ -76,6 +80,13 @@ public class ServerThread extends Thread {
         for (int i = 0; i < clients.size(); i++) {
             System.out.println("[SERVER][MESSAGE] sending message to client...");
             clients.get(i).output.writeObject(message.toString());
+        }
+    }
+
+    private void notifNewDiscussionGroup() throws IOException {
+        for (int i = 0; i < clients.size(); i++) {
+            System.out.println("[SERVER][DISCUSSION] advertising new discussion group...");
+            clients.get(i).output.writeObject(Constants.QUERY_ADD_NEW_DISCUSSION);
         }
     }
 

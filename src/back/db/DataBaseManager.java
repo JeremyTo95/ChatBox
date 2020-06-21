@@ -4,22 +4,37 @@ import front.model.*;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 
+/**
+ *
+ */
 public class DataBaseManager {
+    public static String url = "jdbc:postgresql://localhost:5432/postgres";
+    public static String user = "postgres";
+    public static String passwd = "root";
+    public static Connection conn;
+
+    public DataBaseManager() {
+        try {
+            conn = DriverManager.getConnection(url, user, passwd);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public static Connection getInstance() {
+        if (conn == null) new DataBaseManager();
+        return conn;
+    }
+
+
     public static void sendUserToDB(User utilisateur) {
         try {
             Class.forName("org.postgresql.Driver");
-            System.out.println("Driver O.K.");
-
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
 
             Statement state = conn.createStatement();
 
@@ -39,13 +54,7 @@ public class DataBaseManager {
     public static void sendMessageToDB(Message message) {
         try {
             Class.forName("org.postgresql.Driver");
-            System.out.println("Driver O.K.");
-
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
 
             Statement state = conn.createStatement();
 
@@ -64,13 +73,8 @@ public class DataBaseManager {
     public static void sendChatRoomToDB(ChatRoom chatRoom) {
         try {
             Class.forName("org.postgresql.Driver");
-            System.out.println("Driver O.K.");
 
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
 
             Statement state = conn.createStatement();
 
@@ -86,13 +90,8 @@ public class DataBaseManager {
     public static void sendUserRoomToDB(UserRoom userRoom) {
         try {
             Class.forName("org.postgresql.Driver");
-            System.out.println("Driver O.K.");
 
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
 
             Statement state = conn.createStatement();
 
@@ -108,11 +107,9 @@ public class DataBaseManager {
     public static List<User> getAllUsers() {
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
 
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
+
             Statement state = conn.createStatement();
             ResultSet result = state.executeQuery("SELECT * FROM Users");
 
@@ -142,11 +139,8 @@ public class DataBaseManager {
     public static List<Message> getAllMessage() {
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
 
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
             Statement state = conn.createStatement();
             ResultSet result = state.executeQuery("SELECT * FROM messages");
 
@@ -176,11 +170,7 @@ public class DataBaseManager {
     public static List<ChatRoom> getAllChatRoom() {
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
             Statement state = conn.createStatement();
             ResultSet result = state.executeQuery("SELECT * FROM chatroom");
 
@@ -207,11 +197,7 @@ public class DataBaseManager {
     public static List<UserRoom> getAllUserRoom() {
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
             Statement state = conn.createStatement();
             ResultSet result = state.executeQuery("SELECT * FROM user_room");
 
@@ -236,17 +222,12 @@ public class DataBaseManager {
     }
 
     public static void main(String[] args) {
-        sendUserRoomToDB(Constants.allUserRoom.get(0));
     }
 
     public static void dropUsers() {
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
             Statement state = conn.createStatement();
             ResultSet result = state.executeQuery("DELETE FROM Users");
 
@@ -261,11 +242,7 @@ public class DataBaseManager {
     public static void dropChatRooms() {
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
             Statement state = conn.createStatement();
             ResultSet result = state.executeQuery("DELETE FROM chatroom");
 
@@ -280,11 +257,7 @@ public class DataBaseManager {
     public static void dropMessages() {
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
             Statement state = conn.createStatement();
             ResultSet result = state.executeQuery("DELETE FROM messages");
 
@@ -299,11 +272,7 @@ public class DataBaseManager {
     public static void dropUserRoom() {
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String user = "postgres";
-            String passwd = "root";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = getInstance();
             Statement state = conn.createStatement();
             ResultSet result = state.executeQuery("DELETE FROM user_room");
 

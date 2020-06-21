@@ -22,14 +22,16 @@ public class Client extends AbstractServer {
     private ObjectInputStream input;
     private Thread serverConnectionThread;
     private DefaultListModel listMessageModel;
+    private DefaultListModel listDiscussionModel;
 
     private static ServerConnection serverConnection;
 
     public Client() { isRunning = true; }
 
-    public Client(DefaultListModel listMessageModel) {
+    public Client(DefaultListModel listMessageModel, DefaultListModel listDiscussionModel) {
         this.isRunning = true;
         this.listMessageModel = listMessageModel;
+        this.listDiscussionModel = listDiscussionModel;
     }
 
     /**
@@ -43,7 +45,7 @@ public class Client extends AbstractServer {
             output = new ObjectOutputStream(socket.getOutputStream());
             input  = new ObjectInputStream(socket.getInputStream());
 
-            serverConnection = new ServerConnection(socket, input, output, listMessageModel);
+            serverConnection = new ServerConnection(socket, input, output, listMessageModel, listDiscussionModel);
             serverConnectionThread = new Thread(serverConnection);
             serverConnectionThread.start();
 
@@ -72,6 +74,14 @@ public class Client extends AbstractServer {
             output.writeObject(Constants.QUERY_DISCONNECT_SOCKET);
             serverConnectionThread.interrupt();
             isRunning = false;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addNewDiscussion() {
+        try {
+            output.writeObject(Constants.QUERY_ADD_NEW_DISCUSSION);
         } catch (IOException e) {
             e.printStackTrace();
         }
