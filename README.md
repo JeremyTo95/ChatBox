@@ -9,6 +9,7 @@ Raphael KOSKAS
 Sofiane SERKESTI
 Jeremy TOURARI
 
+<br>
 # Ouvrir le projet sur IntelliJ IDEA
 Etape 0 : Installer IntelliJ IDEA
 Etape 1 : github du projet : https://github.com/JeremyTo95/ChatBox
@@ -24,7 +25,10 @@ Copier le lien
 Ouvrir dans une nouvelle fenêtre et fermer la première
 
 Vous avez ainsi accès au projet sur votre IDE !
+</br>
 
+
+<br>
 # Mise en place de la base de donnée en local
 1ère étape : Télécharger postgreSQL
   --> https://get.enterprisedb.com/postgresql/postgresql-12.3-1-windows-x64.exe
@@ -35,3 +39,4 @@ Vous avez ainsi accès au projet sur votre IDE !
     --> Cliquer sur File -> Project Structure puis sur Librairies, cliquer sur le "+" -> New Project Librairy -> Java
     --> Dans la fenêtre suivante, séléctionner le fichier postgresql-42.2.14.jar téléchargé et cliquer sur "OK", à nouveau "OK" et une dernière fois "OK"
     --> Le .jar s'ajoute au projet nous pourrons utiliser ce driver JDBC pour communiquer avec notre base de donnée
+</br>
