@@ -48,11 +48,11 @@ Les données seront toutes insérées directement depuis le java.
 ## Mise en place du JDBC
 * Télécharger le driver JDBC.
   --> https://jdbc.postgresql.org/download/postgresql-42.2.14.jar
-* Mettre le .jar dans le classpath.
+* Mettre le .jar dans le classpath :
 
   --> Sur IntelliJ IDEA, avec le projet ouvert (cf. Section "Ouvrir le projet sur IntelliJ IDEA").
 
     --> Cliquer sur File -> Project Structure puis sur Librairies, cliquer sur le "+" -> New Project Librairy -> Java .
 
     --> Dans la fenêtre suivante, séléctionner le fichier postgresql-42.2.14.jar téléchargé et cliquer sur "OK", à nouveau "OK" et une dernière fois "OK" .
-    --> Le .jar s'ajoute au projet nous pourrons utiliser ce driver JDBC pour communiquer avec notre base de donnée.
+    --> Le .jar s'ajoute au projet nous pourrons utiliser ce driver JDBC pour communiquer avec notre base de donnée
