@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="4" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,21 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94e43f26-0eef-45ac-93eb-b69b6d62750f" name="Default Changelist" comment="chat final V1.2 : JUnit Test">
-      <change afterPath="$PROJECT_DIR$/test/back/server/ClientTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/front/controller/HomeViewControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/front/controller/PopUpAddDiscussionControllerTest.java" afterDir="false" />
+    <list default="true" id="94e43f26-0eef-45ac-93eb-b69b6d62750f" name="Default Changelist" comment="chat final V1.3 : JUnit final Test">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/back/server/ServerConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/back/server/ServerConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/front/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/front/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/front/model/ChatRoom.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/front/model/ChatRoom.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/back/server/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/back/server/ServerConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/front/controller/HomeViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/front/controller/HomeViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/front/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/front/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/front/controller/PopUpAddDiscussionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/front/controller/PopUpAddDiscussionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/front/model/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/front/model/ChatRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/front/view/HomeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/front/view/HomeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/front/model/ConstantsTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +62,14 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../postgresql-42.2.14.jar!/" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
@@ -367,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592762640847</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="chat final V1.3 : JUnit final Test">
+      <created>1592767383557</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1592767383557</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -405,9 +408,14 @@
     <MESSAGE value="chat final V1.0" />
     <MESSAGE value="chat final V1.1 : Javadoc end" />
     <MESSAGE value="chat final V1.2 : JUnit Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="chat final V1.2 : JUnit Test" />
+    <MESSAGE value="chat final V1.3 : JUnit final Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="chat final V1.3 : JUnit final Test" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="440" y="94" key="#Project_Structure" timestamp="1592767653153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592767653153" />
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592695198990">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -433,37 +441,41 @@
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592654936375" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592592797902" />
+    <state x="707" y="239" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1592769203080">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="707" y="239" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592769203080" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1592729838322">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592729838322" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1592730358134">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1592768499465">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592730358134" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592768499465" />
     <state x="452" y="203" key="Git.Interactive.Rebase.Dialog" timestamp="1592729450866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="452" y="203" key="Git.Interactive.Rebase.Dialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592729450866" />
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1592766799599">
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1592768838890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592766799599" />
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592768838890" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592588116814" />
-    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1592766799599">
+    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1592768838890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592766799599" />
+    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592768838890" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592588116814" />
-    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1592766799599">
+    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1592768838890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592766799599" />
+    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592768838890" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592588116814" />
-    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1592766799599">
+    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1592768838890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592766799599" />
+    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592768838890" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592588116814" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1592688473555">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -494,10 +506,10 @@
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592767232402" />
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1592567051110" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1592762644165">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1592767389610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592762644165" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592767389610" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592570784514" />
     <state x="664" y="412" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1592767191134">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -519,10 +531,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="758" y="381" key="git4idea.rebase.GitRebaseDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592729443378" />
-    <state x="342" y="203" key="new project wizard" timestamp="1592767358697">
+    <state x="342" y="203" key="new project wizard" timestamp="1592767437604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="342" y="203" key="new project wizard/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592767358697" />
+    <state x="342" y="203" key="new project wizard/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592767437604" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -1,8 +1,6 @@
 import back.db.DataBaseManager;
 import front.view.LoginView;
 
-import javax.xml.crypto.Data;
-
 /**
  * <h1>Main</h1>
  * This class is the executor of the project
