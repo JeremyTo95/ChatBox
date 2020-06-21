@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-public class Connect {
+public class DataBaseManager {
     public static void sendUserToDB(User utilisateur) {
         try {
             Class.forName("org.postgresql.Driver");

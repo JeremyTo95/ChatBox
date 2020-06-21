@@ -1,5 +1,6 @@
 package front.view;
 
+import back.db.DataBaseManager;
 import back.server.Client;
 import front.controller.HomeViewController;
 import front.model.*;
@@ -216,6 +217,7 @@ public class HomeView extends JFrame {
         Message m = new Message(user.getId(), Constants.chatRoom.getIdChatRoom(), msg);
         writingField.setText("");
         Constants.client.sendMessage(m);
+        DataBaseManager.sendMessageToDB(m);
     }
 
     /**
