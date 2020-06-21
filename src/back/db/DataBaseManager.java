@@ -139,7 +139,240 @@ public class DataBaseManager {
         return null;
     }
 
+    public static List<Message> getAllMessage() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            String user = "postgres";
+            String passwd = "root";
+
+            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Statement state = conn.createStatement();
+            ResultSet result = state.executeQuery("SELECT * FROM messages");
+
+            List<Message> messageList = new ArrayList();
+            String idMessage, idAuthor, idChatRoom, content, date;
+
+            while(result.next()){
+                idMessage = result.getObject(1).toString();
+                idAuthor = result.getObject(2).toString();
+                idChatRoom = result.getObject(3).toString();
+                content = result.getObject(4).toString();
+                date = result.getObject(5).toString();
+                messageList.add(new Message(UUID.fromString(idMessage), UUID.fromString(idAuthor), UUID.fromString(idChatRoom), content, date));
+            }
+
+            result.close();
+            state.close();
+
+            return messageList;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<ChatRoom> getAllChatRoom() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            String user = "postgres";
+            String passwd = "root";
+
+            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Statement state = conn.createStatement();
+            ResultSet result = state.executeQuery("SELECT * FROM chatroom");
+
+            List<ChatRoom> chatRoomList = new ArrayList();
+            String idChatRoom, title;
+
+            while(result.next()){
+                idChatRoom = result.getObject(1).toString();
+                title = result.getObject(2).toString();
+                chatRoomList.add(new ChatRoom(UUID.fromString(idChatRoom), title));
+            }
+
+            result.close();
+            state.close();
+
+            return chatRoomList;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<UserRoom> getAllUserRoom() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            String user = "postgres";
+            String passwd = "root";
+
+            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Statement state = conn.createStatement();
+            ResultSet result = state.executeQuery("SELECT * FROM user_room");
+
+            List<UserRoom> chatRoomList = new ArrayList();
+            String idAuthor, idChatRoom;
+
+            while(result.next()){
+                idAuthor = result.getObject(1).toString();
+                idChatRoom = result.getObject(2).toString();
+                chatRoomList.add(new UserRoom(UUID.fromString(idAuthor), UUID.fromString(idChatRoom)));
+            }
+
+            result.close();
+            state.close();
+
+            return chatRoomList;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         sendUserRoomToDB(Constants.allUserRoom.get(0));
+    }
+
+    public static void dropUsers() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            String user = "postgres";
+            String passwd = "root";
+
+            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Statement state = conn.createStatement();
+            ResultSet result = state.executeQuery("DELETE FROM Users");
+
+            result.close();
+            state.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void dropChatRooms() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            String user = "postgres";
+            String passwd = "root";
+
+            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Statement state = conn.createStatement();
+            ResultSet result = state.executeQuery("DELETE FROM chatroom");
+
+            result.close();
+            state.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void dropMessages() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            String user = "postgres";
+            String passwd = "root";
+
+            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Statement state = conn.createStatement();
+            ResultSet result = state.executeQuery("DELETE FROM messages");
+
+            result.close();
+            state.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void dropUserRoom() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            String user = "postgres";
+            String passwd = "root";
+
+            Connection conn = DriverManager.getConnection(url, user, passwd);
+            Statement state = conn.createStatement();
+            ResultSet result = state.executeQuery("DELETE FROM user_room");
+
+            result.close();
+            state.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void prepopulateTable() {
+        List<User> allUser = getAllUsers();
+        List<ChatRoom> allChatRoom = getAllChatRoom();
+        List<UserRoom> allUserRoom = getAllUserRoom();
+        List<Message> allMessage   = getAllMessage();
+
+        if (allUser.size() < 5) {
+            dropUsers();
+            sendUserToDB(new User("6952bd59-63e0-47ab-b0f1-034465b8efe8", "Jérémy", "Tourari", "Sparta", "password"));
+            sendUserToDB(new User("21f1a963-c7eb-43d8-8321-d1da6aafa55f", "Sofiane", "Serkesti", "JakenPon", "password"));
+            sendUserToDB(new User("25a5c352-bccc-4315-83f9-0cf45559792e", "Mostafa", "Omrane", "vegaPunk", "password"));
+            sendUserToDB(new User("0321c465-c766-4c8e-a5cc-46da731458f6", "Yoann", "Anago", "Gims", "password"));
+            sendUserToDB(new User("ad67ca53-d96e-4cb8-84aa-d5d3287e758c", "Raphaël", "KOSKAS", "RaphyStark", "password"));
+        }
+
+        if (allChatRoom.size() < 10) {
+            dropChatRooms();
+            sendChatRoomToDB(new ChatRoom(UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe"), "Les génies du logiciel"));
+            sendChatRoomToDB(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b165"), "Discussion2"));
+            sendChatRoomToDB(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b166"), "Discussion3"));
+            sendChatRoomToDB(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b167"), "Discussion4"));
+            sendChatRoomToDB(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b168"), "Discussion5"));
+            sendChatRoomToDB(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b169"), "Discussion6"));
+            sendChatRoomToDB(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b162"), "Discussion7"));
+            sendChatRoomToDB(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b161"), "Discussion8"));
+            sendChatRoomToDB(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b134"), "Discussion9"));
+            sendChatRoomToDB(new ChatRoom(UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b125"), "Discussion10"));
+        }
+
+        if (allUserRoom.size() < 5) {
+            dropUserRoom();
+            sendUserRoomToDB(new UserRoom(UUID.fromString("6952bd59-63e0-47ab-b0f1-034465b8efe8"), UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe")));
+            sendUserRoomToDB(new UserRoom(UUID.fromString("6952bd59-63e0-47ab-b0f1-034465b8efe8"), UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b165")));
+            sendUserRoomToDB(new UserRoom(UUID.fromString("6952bd59-63e0-47ab-b0f1-034465b8efe8"), UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b168")));
+            sendUserRoomToDB(new UserRoom(UUID.fromString("6952bd59-63e0-47ab-b0f1-034465b8efe8"), UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b169")));
+
+            sendUserRoomToDB(new UserRoom(UUID.fromString("21f1a963-c7eb-43d8-8321-d1da6aafa55f"), UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe")));
+            sendUserRoomToDB(new UserRoom(UUID.fromString("21f1a963-c7eb-43d8-8321-d1da6aafa55f"), UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b165")));
+            sendUserRoomToDB(new UserRoom(UUID.fromString("21f1a963-c7eb-43d8-8321-d1da6aafa55f"), UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b168")));
+            sendUserRoomToDB(new UserRoom(UUID.fromString("21f1a963-c7eb-43d8-8321-d1da6aafa55f"), UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b169")));
+
+            sendUserRoomToDB(new UserRoom(UUID.fromString("25a5c352-bccc-4315-83f9-0cf45559792e"), UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe")));
+            sendUserRoomToDB(new UserRoom(UUID.fromString("25a5c352-bccc-4315-83f9-0cf45559792e"), UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b165")));
+
+            sendUserRoomToDB(new UserRoom(UUID.fromString("0321c465-c766-4c8e-a5cc-46da731458f6"), UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe")));
+            sendUserRoomToDB(new UserRoom(UUID.fromString("0321c465-c766-4c8e-a5cc-46da731458f6"), UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b165")));
+
+            sendUserRoomToDB(new UserRoom(UUID.fromString("ad67ca53-d96e-4cb8-84aa-d5d3287e758c"), UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe")));
+            sendUserRoomToDB(new UserRoom(UUID.fromString("ad67ca53-d96e-4cb8-84aa-d5d3287e758c"), UUID.fromString("9c4d7607-5bb5-42de-90ba-0797ecb7b165")));
+        }
+
+        if (allMessage.size() < 5) {
+            dropMessages();
+            sendMessageToDB(new Message(UUID.fromString("7b162ccd-3b51-4dfb-9b5f-6c0a79a54e97"), UUID.fromString("6952bd59-63e0-47ab-b0f1-034465b8efe8"), UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe"), "Message1", "2020-06-21T10:20:20.382116400"));
+            sendMessageToDB(new Message(UUID.fromString("c8962346-a195-487b-b36a-5e4377bd1629"), UUID.fromString("6952bd59-63e0-47ab-b0f1-034465b8efe8"), UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe"), "Message2", "2020-06-21T10:20:20.382116400"));
+            sendMessageToDB(new Message(UUID.fromString("e60473e0-f81f-4c2d-803d-1bb9f79c5f78"), UUID.fromString("6952bd59-63e0-47ab-b0f1-034465b8efe8"), UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe"), "Message3", "2020-06-21T10:20:20.382116400"));
+            sendMessageToDB(new Message(UUID.fromString("26cc714d-a507-42cb-bfdf-a9f7c69c3b26"), UUID.fromString("21f1a963-c7eb-43d8-8321-d1da6aafa55f"), UUID.fromString("8d433b20-7a5c-4107-9777-ff15312b89fe"), "Message1", "2020-06-21T10:20:20.382116400"));
+
+        }
     }
 }

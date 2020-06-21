@@ -11,13 +11,6 @@ import java.util.UUID;
  * This class refers to the chat room object, of all chat room in our service
  */
 public class ChatRoom implements Serializable {
-    // vieux
-//    private UUID idChatRoom;
-//    private String titleRoom;
-//    private List<User> userList;
-//    private List<Message> messageList;
-
-    // neuf
     private UUID   idChatRoom;
     private String titleRoom;
 
