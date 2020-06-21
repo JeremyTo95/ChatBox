@@ -1,7 +1,7 @@
 ChatBox
 ======
 
-**Membres du groupe**
+## Membres du groupe
 
 Yoann ANAGO
 
