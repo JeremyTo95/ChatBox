@@ -144,7 +144,6 @@ public class HomeView extends JFrame {
      */
     private void setCurrentDiscussionLabel() {
         int currentIndex = this.listDiscussionArea.getSelectedIndex();
-        ;
         if (currentIndex < 0) {
             currentIndex = 0;
         }
@@ -166,9 +165,25 @@ public class HomeView extends JFrame {
                     setCurrentDiscussionLabel();
                     Constants.chatRoom = controller.getChatRoomList().get(list.getSelectedIndex());
                     System.out.println(Constants.chatRoom);
+                    clearScreenMessage();
+                    loadScreenMessage();
                 }
             }
         });
+    }
+
+    private void loadScreenMessage() {
+        List<Message> allMessages = Constants.allMessages;
+//        List<ChatRoom> chatRoomOfUser = UserRoom.getChatRoomByIdUser(user.getId());
+        // GET ALL MESSAGE AND GET THE MESSAGE OF CHATROOM
+        for (int i = 0; i < allMessages.size(); i++) {
+//            for (int j = 0; j < chatRoomOfUser.size(); j++) {
+//
+//            }
+            System.out.println("here");
+            if (allMessages.get(i).getIdChatRoom().equals(Constants.chatRoom.getIdChatRoom()))
+                writeNewMessage(listMessageModel, Constants.chatRoom, allMessages.get(i));
+        }
     }
 
     private void setDisconnectButton() {
@@ -212,6 +227,10 @@ public class HomeView extends JFrame {
         User user = User.getUserFromId(msg.getIdAuthor());
         if (msg.getIdChatRoom().equals(chatRoom.getIdChatRoom()) && user != null)
             listMessageModel.addElement(user.getPseudo() + " : " + msg.getContent());
+    }
+
+    private void clearScreenMessage() {
+        listMessageModel.clear();
     }
 
     /**

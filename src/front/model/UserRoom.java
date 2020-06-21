@@ -23,6 +23,20 @@ public class UserRoom {
         return list;
     }
 
+    public static List<ChatRoom> getChatRoomByIdUser(UUID idAuthor) {
+        List<ChatRoom> list = new ArrayList<>();
+        List<UserRoom> userRoomByUserId = getUserRoomByIdUser(idAuthor);
+
+        for (int i = 0; i < userRoomByUserId.size(); i++) {
+            for (int j = 0; j < Constants.allChatRoom.size(); i++) {
+                if (userRoomByUserId.get(i).getIdChatRoom().equals(Constants.allChatRoom.get(j).getIdChatRoom()))
+                    list.add(Constants.allChatRoom.get(i));
+            }
+        }
+
+        return list;
+    }
+
     public UUID getIdChatRoom() {
         return idChatRoom;
     }
