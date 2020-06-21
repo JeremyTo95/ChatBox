@@ -19,7 +19,7 @@ public class LoginView extends JFrame {
     private JLabel usernameLabel;
     private JTextField usernameField;
     private JLabel passwordLabel;
-    private JTextField passwordField;
+    private JPasswordField passwordField;
     private JButton submitButton;
 
     /**
@@ -74,7 +74,7 @@ public class LoginView extends JFrame {
         passwordPanel.setLayout(new BoxLayout(passwordPanel, BoxLayout.X_AXIS));
         passwordPanel.setBackground(Color.PINK);
         this.passwordLabel = new JLabel("Password", SwingConstants.RIGHT);
-        this.passwordField = new JTextField();
+        this.passwordField = new JPasswordField();
         passwordPanel.add(passwordLabel);
         passwordPanel.add(passwordField);
         pan.add(passwordPanel);

@@ -130,7 +130,7 @@ public class HomeView extends JFrame {
         for (int k = 0; k < controller.getChatRoomList().size(); k++) {
             for (int l = 0; l < userRoomList.size(); l++) {
                 if (controller.getChatRoomList().get(k).getIdChatRoom().equals(userRoomList.get(l).getIdChatRoom()))
-                listDiscussionModel.addElement(controller.getChatRoomList().get(k));
+                    this.addDiscussionToModel(controller.getChatRoomList().get(k));
             }
         }
         for (int i = 0; i < controller.getChatRoomList().size(); i++) {
@@ -185,6 +185,31 @@ public class HomeView extends JFrame {
             if (allMessages.get(i).getIdChatRoom().equals(Constants.chatRoom.getIdChatRoom()))
                 writeNewMessage(listMessageModel, Constants.chatRoom, allMessages.get(i));
         }
+    }
+
+    private void addDiscussionToModel(ChatRoom chat) {
+        this.listDiscussionModel.addElement(chat);
+    }
+
+    /**
+     * This method configure the adding button to open a pop up that allows you to
+     */
+    private void setAddingButton() {
+        this.addingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PopUpAddDiscussion popupDiscussion = new PopUpAddDiscussion(user);
+                popupDiscussion.run();
+                // ArrayList<String> listPseudoSelected = popupDiscussion.getUUIDList();
+                listDiscussionModel = popupDiscussion.getListDiscussionModel();
+                // clearDiscussion();
+
+            }
+        });
+    }
+
+    private void clearDiscussion() {
+        this.listDiscussionModel.clear();
     }
 
     private void setDisconnectButton() {
