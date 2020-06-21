@@ -1,5 +1,6 @@
 package back.server;
 
+import front.model.ChatRoom;
 import front.model.Constants;
 import front.model.Message;
 import front.view.HomeView;
@@ -52,7 +53,7 @@ public class ServerConnection extends Thread {
                }
                serverResponse = Message.fromString(inputStr);
                System.out.print("Server says : " + serverResponse + "\nAnd listMessageModel : " + listMessageModel + "\n> ");
-               if (listMessageModel != null) HomeView.writeNewMessage(listMessageModel, serverResponse);
+               if (listMessageModel != null) HomeView.writeNewMessage(listMessageModel, Constants.chatRoom, serverResponse);
            }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

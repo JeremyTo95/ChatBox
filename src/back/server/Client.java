@@ -1,5 +1,6 @@
 package back.server;
 
+import front.model.ChatRoom;
 import front.model.Constants;
 import front.model.Message;
 
@@ -63,20 +64,14 @@ public class Client extends AbstractServer {
         }
     }
 
+    /**
+     * This method disconnect the client
+     */
     public void disconnect() {
         try {
-//            if (serverConnectionThread != null) {
-//                serverConnectionThread.interrupt();
-//                serverConnectionThread = null;
-//            }
             output.writeObject(Constants.QUERY_DISCONNECT_SOCKET);
             serverConnectionThread.interrupt();
             isRunning = false;
-            System.out.println(serverConnectionThread.isInterrupted());
-//            input.close();
-//            output.close();
-//            socket.close();
-//            if (socket != null && serverConnectionThread == null) socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

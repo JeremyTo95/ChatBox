@@ -10,8 +10,16 @@ import java.util.UUID;
  * This class represents the message which are exanges on the chatroom
  */
 public class Message implements Serializable {
+//    vieux
+//    private UUID idMessage;
+//    private UUID idAuthor;
+//    private String content;
+//    private LocalDateTime date;
+
+    // new
     private UUID idMessage;
     private UUID idAuthor;
+    private UUID idChatRoom;
     private String content;
     private LocalDateTime date;
 
@@ -23,9 +31,10 @@ public class Message implements Serializable {
      * @param content
      * @param date
      */
-    public Message(UUID idMessage, UUID idAuthor, String content, String date) {
+    public Message(UUID idMessage, UUID idAuthor, UUID idChatRoom, String content, String date) {
         this.idMessage = idMessage;
         this.idAuthor = idAuthor;
+        this.idChatRoom = idChatRoom;
         this.content = content;
         this.date = LocalDateTime.parse(date);
     }
@@ -36,8 +45,9 @@ public class Message implements Serializable {
      * @param idAuthor
      * @param content
      */
-    public Message(UUID idAuthor, String content) {
+    public Message(UUID idAuthor, UUID idChatRoom, String content) {
         this.idAuthor = idAuthor;
+        this.idChatRoom = idChatRoom;
         this.content = content;
         this.idMessage = UUID.randomUUID();
         this.date = LocalDateTime.now();
@@ -52,6 +62,7 @@ public class Message implements Serializable {
         return "Message{" +
                 "idMessage=" + idMessage +
                 ", idAuthor=" + idAuthor +
+                ", idChatRoom=" + idChatRoom +
                 ", content=" + content +
                 ", date=" + date +
                 '}';
@@ -68,8 +79,9 @@ public class Message implements Serializable {
         return new Message(
                 UUID.fromString(dataSplit[0].replace("idMessage=", "")),
                 UUID.fromString(dataSplit[1].replace(" idAuthor=", "")),
-                dataSplit[2].replace(" content=", ""),
-                dataSplit[3].replace(" date=", "")
+                UUID.fromString(dataSplit[2].replace(" idChatRoom=", "")),
+                dataSplit[3].replace(" content=", ""),
+                dataSplit[4].replace(" date=", "")
         );
     }
 
@@ -135,5 +147,10 @@ public class Message implements Serializable {
      */
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+
+    public UUID getIdChatRoom() {
+        return idChatRoom;
     }
 }

@@ -2,9 +2,7 @@ package front.view;
 
 import back.server.Client;
 import front.controller.HomeViewController;
-import front.model.Constants;
-import front.model.Message;
-import front.model.User;
+import front.model.*;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -12,6 +10,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * <h1>Object HomeView</h1>
@@ -19,8 +18,7 @@ import java.awt.event.ActionListener;
  */
 public class HomeView extends JFrame {
     private User user;
-    private int oldIndex;
-    private String ipChatRoom;
+    private List<UserRoom> userRoomList;
     private JPanel container;
     private HomeViewController controller;
     private JButton disconnectButton;
@@ -42,7 +40,6 @@ public class HomeView extends JFrame {
     public HomeView(User user) {
         super();
         this.user                     = user;
-        this.oldIndex                 = -1;
         this.container                = new JPanel();
         this.controller               = new HomeViewController(this);
         this.disconnectButton         = new JButton("Disconnect");
@@ -57,6 +54,8 @@ public class HomeView extends JFrame {
         this.listDiscussionScrollPane = new JScrollPane(listDiscussionArea);
         this.listMessageScrollPane    = new JScrollPane(listMessageArea);
         Constants.client              = new Client(listMessageModel);
+        Constants.client.connect(Constants.IP_SERVER);
+        this.userRoomList = UserRoom.getUserRoomByIdUser(user.getId());
     }
 
     /**
@@ -128,12 +127,15 @@ public class HomeView extends JFrame {
      */
     private void setDefaultListModel() {
         for (int k = 0; k < controller.getChatRoomList().size(); k++) {
-            listDiscussionModel.addElement(controller.getChatRoomList().get(k));
+            for (int l = 0; l < userRoomList.size(); l++) {
+                if (controller.getChatRoomList().get(k).getIdChatRoom().equals(userRoomList.get(l).getIdChatRoom()))
+                listDiscussionModel.addElement(controller.getChatRoomList().get(k));
+            }
         }
         for (int i = 0; i < controller.getChatRoomList().size(); i++) {
-            for (int j = 0; j < controller.getChatRoomList().get(i).getMessageList().size(); j++) {
-                listMessageModel.addElement(controller.getChatRoomList().get(i).getMessageList().get(j).getContent());
-            }
+//            for (int j = 0; j < controller.getChatRoomList().get(i).getMessageList().size(); j++) {
+//                listMessageModel.addElement(controller.getChatRoomList().get(i).getMessageList().get(j).getContent());
+//            }
         }
     }
 
@@ -162,12 +164,8 @@ public class HomeView extends JFrame {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting() == false) {
                     setCurrentDiscussionLabel();
-                    System.out.println(list.getSelectedIndex());
-                    if (oldIndex != -1) Constants.client.disconnect();
-                    ipChatRoom = controller.getChatRoomList().get(list.getSelectedIndex()).getIp();
-                    System.out.println(ipChatRoom + " " + list.getSelectedIndex());
-                    Constants.client.connect(Constants.IP_SERVER);
-                    oldIndex = list.getSelectedIndex();
+                    Constants.chatRoom = controller.getChatRoomList().get(list.getSelectedIndex());
+                    System.out.println(Constants.chatRoom);
                 }
             }
         });
@@ -200,14 +198,20 @@ public class HomeView extends JFrame {
      */
     public void addMessageToList() {
         String msg = writingField.getText();
-        Message m = new Message(user.getId(), msg);
+        Message m = new Message(user.getId(), Constants.chatRoom.getIdChatRoom(), msg);
         writingField.setText("");
         Constants.client.sendMessage(m);
     }
 
-    public static void writeNewMessage(DefaultListModel listMessageModel, Message msg) {
+    /**
+     * This method write a message in the message area
+     * @param listMessageModel
+     * @param msg
+     */
+    public static void writeNewMessage(DefaultListModel listMessageModel, ChatRoom chatRoom, Message msg) {
         User user = User.getUserFromId(msg.getIdAuthor());
-        if (user != null) listMessageModel.addElement(user.getPseudo() + " : " + msg.getContent());
+        if (msg.getIdChatRoom().equals(chatRoom.getIdChatRoom()) && user != null)
+            listMessageModel.addElement(user.getPseudo() + " : " + msg.getContent());
     }
 
     /**
