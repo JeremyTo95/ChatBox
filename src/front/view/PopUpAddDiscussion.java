@@ -61,6 +61,8 @@ public class PopUpAddDiscussion extends JFrame {
 	}
 
 	public void setView() {
+		List<User> userListDB = DataBaseManager.getAllUsers();
+
 		setPanel(container, new BoxLayout(container, BoxLayout.Y_AXIS), Color.PINK);
 		JLabel messagePopUpLabel = new JLabel("Ajout nouvelle conversation");
 
@@ -71,9 +73,9 @@ public class PopUpAddDiscussion extends JFrame {
 
 		container.add(messagePopUpLabel);
 
-		for (int i = 0; i < Constants.allUsers.size(); i++) {
+		for (int i = 0; i < userListDB.size(); i++) {
 			model.addElement(new JCheckBox(
-					Constants.allUsers.get(i).getPseudo() + " (" + Constants.allUsers.get(i).getFirstName() + ")"));
+					userListDB.get(i).getPseudo() + " (" + userListDB.get(i).getFirstName() + ")"));
 		}
 
 		JScrollPane listPeoplePan = new JScrollPane(new JCheckBoxList(model));
@@ -104,11 +106,12 @@ public class PopUpAddDiscussion extends JFrame {
 
 	public List<UUID> getUserInChatRoom() {
 		List<UUID> list = new ArrayList<>();
+		List<User> userListDB = DataBaseManager.getAllUsers();
 
 		for (int i = 0; i < this.model.getSize(); i++) {
 			if (this.model.get(i).isSelected()) {
-				System.out.println(Constants.allUsers.get(i).getPseudo());
-				list.add(Constants.allUsers.get(i).getId());
+				System.out.println(userListDB.get(i).getPseudo());
+				list.add(userListDB.get(i).getId());
 //				this.selectedUUID.add(Constants.allUsers.get(i).getId().toString());
 //				// ICI IL Y A UNE ERREUR
 //				this.listDiscussionModel.addElement(new ChatRoom(UUID.fromString(selectedUUID.get(i)), "Discussion" + i));
@@ -125,11 +128,11 @@ public class PopUpAddDiscussion extends JFrame {
 		this.addButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ChatRoom chatRoom = new ChatRoom(UUID.randomUUID(), "Discussion" + (Constants.allChatRoom.size() + 1));
+				ChatRoom chatRoom = new ChatRoom(UUID.randomUUID(), "Discussion" + (DataBaseManager.getAllChatRoom().size() + 1));
 				DataBaseManager.sendChatRoomToDB(chatRoom);
 				List<UUID> usersInChatRoom = getUserInChatRoom();
 				for (int i = 0; i < usersInChatRoom.size(); i++) DataBaseManager.sendUserRoomToDB(new UserRoom(usersInChatRoom.get(i), chatRoom.getIdChatRoom()));
-
+				Constants.client.addNewDiscussion();
 				exitJFrame();
 			}
 		});

@@ -1,8 +1,7 @@
 package back.server;
 
-import front.model.ChatRoom;
-import front.model.Constants;
-import front.model.Message;
+import back.db.DataBaseManager;
+import front.model.*;
 import front.view.HomeView;
 
 import javax.swing.*;
@@ -20,6 +19,7 @@ public class ServerConnection extends Thread {
     private ObjectOutputStream output;
 
     private DefaultListModel listMessageModel;
+    private DefaultListModel listDiscussionModel;
 
     /**
      * This constructor initialize the ServerConnection features
@@ -27,12 +27,14 @@ public class ServerConnection extends Thread {
      * @param input Object input stream
      * @param output Object input stream
      * @param listMessageModel Space where we print message
+     * @param listDiscussionModel Space where we print discussion name
      */
-    public ServerConnection(Socket socket, ObjectInputStream input, ObjectOutputStream output, DefaultListModel listMessageModel) {
+    public ServerConnection(Socket socket, ObjectInputStream input, ObjectOutputStream output, DefaultListModel listMessageModel, DefaultListModel listDiscussionModel) {
         this.socket = socket;
         this.input  = input;
         this.output = output;
         this.listMessageModel = listMessageModel;
+        this.listDiscussionModel = listDiscussionModel;
     }
 
     //TODO: Get data drom database and show into the chat
@@ -46,14 +48,20 @@ public class ServerConnection extends Thread {
         try {
            while (!isInterrupted()) {
                String inputStr = (String) input.readObject();
+               System.out.println("inputStr : " + inputStr);
                if (inputStr == null) break;
                else if (inputStr.equals(Constants.QUERY_DISCONNECT_SOCKET)) {
                    interrupt();
                    break;
+               } else if (inputStr.equals(Constants.QUERY_ADD_NEW_DISCUSSION)) {
+                   listDiscussionModel.clear();
+                   HomeView.setDefaultListModel(DataBaseManager.getAllChatRoom(), UserRoom.getUserRoomByIdUser(Constants.currentUser.getId()), listDiscussionModel);
+               } else {
+                   serverResponse = Message.fromString(inputStr);
+                   System.out.print("Server says : " + serverResponse + "\nAnd listMessageModel : " + listMessageModel + "\n> ");
+                   DataBaseManager.getAllMessage().add(serverResponse);
+                   if (listMessageModel != null) HomeView.writeNewMessage(listMessageModel, Constants.chatRoom, serverResponse);
                }
-               serverResponse = Message.fromString(inputStr);
-               System.out.print("Server says : " + serverResponse + "\nAnd listMessageModel : " + listMessageModel + "\n> ");
-               if (listMessageModel != null) HomeView.writeNewMessage(listMessageModel, Constants.chatRoom, serverResponse);
            }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

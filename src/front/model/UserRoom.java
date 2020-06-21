@@ -1,5 +1,8 @@
 package front.model;
 
+import back.db.DataBaseManager;
+
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -15,9 +18,10 @@ public class UserRoom {
 
     public static List<UserRoom> getUserRoomByIdUser(UUID idAuthor) {
         List<UserRoom> list = new ArrayList<>();
+        List<UserRoom> userRoomDB = DataBaseManager.getAllUserRoom();
 
-        for (int i = 0; i < Constants.allUserRoom.size(); i++) {
-            if (Constants.allUserRoom.get(i).idAuthor.equals(idAuthor)) list.add(Constants.allUserRoom.get(i));
+        for (int i = 0; i < userRoomDB.size(); i++) {
+            if (userRoomDB.get(i).idAuthor.equals(idAuthor)) list.add(userRoomDB.get(i));
         }
 
         return list;
@@ -25,12 +29,13 @@ public class UserRoom {
 
     public static List<ChatRoom> getChatRoomByIdUser(UUID idAuthor) {
         List<ChatRoom> list = new ArrayList<>();
+        List<ChatRoom> chatRoomDB = DataBaseManager.getAllChatRoom();
         List<UserRoom> userRoomByUserId = getUserRoomByIdUser(idAuthor);
 
         for (int i = 0; i < userRoomByUserId.size(); i++) {
-            for (int j = 0; j < Constants.allChatRoom.size(); i++) {
-                if (userRoomByUserId.get(i).getIdChatRoom().equals(Constants.allChatRoom.get(j).getIdChatRoom()))
-                    list.add(Constants.allChatRoom.get(i));
+            for (int j = 0; j < chatRoomDB.size(); j++) {
+                if (userRoomByUserId.get(i).getIdChatRoom().equals(chatRoomDB.get(j).getIdChatRoom()))
+                    list.add(chatRoomDB.get(j));
             }
         }
 

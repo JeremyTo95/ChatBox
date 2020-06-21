@@ -61,10 +61,10 @@ public class Message implements Serializable {
     public String toString() {
         return "Message{" +
                 "idMessage=" + idMessage +
-                ", idAuthor=" + idAuthor +
-                ", idChatRoom=" + idChatRoom +
-                ", content=" + content +
-                ", date=" + date +
+                "!: idAuthor=" + idAuthor +
+                "!: idChatRoom=" + idChatRoom +
+                "!: content=" + content +
+                "!: date=" + date +
                 '}';
     }
 
@@ -75,7 +75,7 @@ public class Message implements Serializable {
      */
     public static Message fromString(String str) {
         String data = str.substring(8, str.length()-1);
-        String[] dataSplit = data.split(",");
+        String[] dataSplit = data.split("!:");
         return new Message(
                 UUID.fromString(dataSplit[0].replace("idMessage=", "")),
                 UUID.fromString(dataSplit[1].replace(" idAuthor=", "")),

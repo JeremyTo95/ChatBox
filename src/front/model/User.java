@@ -1,6 +1,8 @@
 package front.model;
 
 
+import back.db.DataBaseManager;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
@@ -41,7 +43,7 @@ public class User implements Serializable {
 	}
 
     public static User getUserFromId(UUID idAuthor) {
-		List<User> allUsers = Constants.allUsers;
+		List<User> allUsers = DataBaseManager.getAllUsers();
 		for (int i = 0; i < allUsers.size(); i++) {
 			if (allUsers.get(i).getId().equals(idAuthor)) return allUsers.get(i);
 		}
