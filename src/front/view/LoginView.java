@@ -1,6 +1,7 @@
 package front.view;
 
 import back.db.DataBaseManager;
+import front.controller.LoginController;
 import front.model.Constants;
 import front.model.User;
 
@@ -25,11 +26,14 @@ public class LoginView extends JFrame {
     private JPasswordField passwordField;
     private JButton submitButton;
 
+    private LoginController controller;
+
     /**
      * Constructor of the UI
      */
     public LoginView() {
         super();
+        controller = new LoginController(this);
         this.setView();
     }
 
@@ -88,7 +92,7 @@ public class LoginView extends JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setSubmitButton();
+        controller.setSubmitButton();
     }
 
     /**
@@ -108,57 +112,13 @@ public class LoginView extends JFrame {
         return b;
     }
 
-    /**
-     * This method enable to define the logic of the submit button
-     */
-    private void setSubmitButton() {
-        List<User> userListDB = DataBaseManager.getAllUsers();
-        this.submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username = usernameField.getText();
-                String password = passwordField.getText();
 
-                for (int i = 0; i < userListDB.size(); i++) {
-                    if (userListDB.get(i).getPseudo().equals(username) && userListDB.get(i).getPassword().equals(password)) {
-                        // TODO: ENCHAINE SUR LA HOMEVIEW
-                        System.out.println("connexion : ok");
-                        Constants.currentUser = userListDB.get(i);
-                        i = userListDB.size();
-                        goToHome();
-                        dispose();
-
-                    } else {
-                        // TODO: EFFACE LES CHAMPS PASSWORD
-                        System.out.println("connexion : ko");
-                        passwordField.setText("");
-                    }
-                }
-            }
-        });
-    }
-
-    /**
-     * This method enable to run the HomeView
-     */
-    private void goToHome() {
-        this.removeAll();
-        HomeView letsGo = new HomeView(Constants.currentUser);
-        letsGo.run();
-    }
+    public JLabel getWelcomeTextLabel() { return welcomeTextLabel; }
+    public JButton getSignInButton() { return signInButton; }
+    public JButton getSignUpButton() { return signUpButton; }
+    public JLabel getUsernameLabel() { return usernameLabel; }
+    public JTextField getUsernameField() { return usernameField; }
+    public JLabel getPasswordLabel() { return passwordLabel; }
+    public JPasswordField getPasswordField() { return passwordField; }
+    public JButton getSubmitButton() { return submitButton; }
 }
-
-/*
- * TODO: ................................. FONCTION PRINCIPALE
- * .................................
- *
- * TODO: MENU DE CONNEXION (LOGIN PAGE) --> Récupère l'utilisateur courant et
- * son profil --> Récupère tous les chatRooms où il est identifié
- *
- * TODO: MENU D'ACCEUIL (HOME PAGE) --> Rejoindre un chat room --> Créer un
- * nouveau chatRoom --> Ajouter / Selectionner des utilisateurs --> Ajouter un
- * titre au salon
- *
- * TODO: FENETRE DE DISCUSSION (CHAT ROOM) --> Récupère les messages de ce chat
- * --> Envoie d'un nouveau message dans le chat
- */

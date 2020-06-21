@@ -1,6 +1,7 @@
 package back.server;
 
 import back.db.DataBaseManager;
+import front.controller.HomeViewController;
 import front.model.*;
 import front.view.HomeView;
 
@@ -55,7 +56,7 @@ public class ServerConnection extends Thread {
                    break;
                } else if (inputStr.equals(Constants.QUERY_ADD_NEW_DISCUSSION)) {
                    listDiscussionModel.clear();
-                   HomeView.setDefaultListModel(DataBaseManager.getAllChatRoom(), UserRoom.getUserRoomByIdUser(Constants.currentUser.getId()), listDiscussionModel);
+                   HomeViewController.setDefaultListModel(DataBaseManager.getAllChatRoom(), UserRoom.getUserRoomByIdUser(Constants.currentUser.getId()), listDiscussionModel);
                } else {
                    serverResponse = Message.fromString(inputStr);
                    System.out.print("Server says : " + serverResponse + "\nAnd listMessageModel : " + listMessageModel + "\n> ");

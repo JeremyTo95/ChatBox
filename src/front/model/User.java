@@ -34,6 +34,15 @@ public class User implements Serializable {
 		this.password  = password;
 	}
 
+	/**
+	 * Other constructor of the User
+	 *
+	 * @param id
+	 * @param firstName
+	 * @param lastName
+	 * @param pseudo
+	 * @param password
+	 */
 	public User(String id, String firstName, String lastName, String pseudo, String password) {
 		this.id        = UUID.fromString(id);
 		this.firstName = firstName;
@@ -42,6 +51,11 @@ public class User implements Serializable {
 		this.password  = password;
 	}
 
+	/**
+	 * This method enable to get the user from an ID
+	 * @param idAuthor
+	 * @return
+	 */
     public static User getUserFromId(UUID idAuthor) {
 		List<User> allUsers = DataBaseManager.getAllUsers();
 		for (int i = 0; i < allUsers.size(); i++) {

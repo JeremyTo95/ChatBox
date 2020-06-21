@@ -2,7 +2,6 @@ package back.server;
 
 import front.model.Constants;
 import front.model.Message;
-import front.model.UserRoom;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -83,6 +82,10 @@ public class ServerThread extends Thread {
         }
     }
 
+    /**
+     * this method enable to notify a new discussion on the server
+     * @throws IOException
+     */
     private void notifNewDiscussionGroup() throws IOException {
         for (int i = 0; i < clients.size(); i++) {
             System.out.println("[SERVER][DISCUSSION] advertising new discussion group...");
@@ -90,6 +93,10 @@ public class ServerThread extends Thread {
         }
     }
 
+    /**
+     * Getter of the UUID
+     * @return
+     */
     public UUID getUUID() {
         return id;
     }

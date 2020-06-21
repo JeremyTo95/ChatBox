@@ -30,27 +30,27 @@ import javax.swing.border.EmptyBorder;
 import javax.xml.crypto.Data;
 
 import back.db.DataBaseManager;
+import front.controller.PopUpAddDiscussionController;
 import front.model.ChatRoom;
 import front.model.Constants;
 import front.model.User;
 import front.model.UserRoom;
 
 public class PopUpAddDiscussion extends JFrame {
-	User user;
-	JButton addButton;
-	JButton cancelButton;
-	JPanel container;
-	ArrayList<String> selectedUUID;
-	DefaultListModel<JCheckBox> model;
-	DefaultListModel listDiscussionModel;
+	private JButton addButton;
+	private JButton cancelButton;
+	private JPanel container;
+	private DefaultListModel<JCheckBox> model;
+	private DefaultListModel listDiscussionModel;
+
+	private PopUpAddDiscussionController controller;
 
 	public PopUpAddDiscussion(User user) {
-		this.user = user;
-		this.addButton = new JButton("Add");
-		this.cancelButton = new JButton("Cancel");
-		this.container = new JPanel();
-		this.selectedUUID = new ArrayList<>();
-		this.model = new DefaultListModel<JCheckBox>();
+		this.controller          = new PopUpAddDiscussionController(this, user);
+		this.addButton           = new JButton("Add");
+		this.cancelButton        = new JButton("Cancel");
+		this.container           = new JPanel();
+		this.model               = new DefaultListModel<JCheckBox>();
 		this.listDiscussionModel = new DefaultListModel();
 	}
 
@@ -73,10 +73,7 @@ public class PopUpAddDiscussion extends JFrame {
 
 		container.add(messagePopUpLabel);
 
-		for (int i = 0; i < userListDB.size(); i++) {
-			model.addElement(new JCheckBox(
-					userListDB.get(i).getPseudo() + " (" + userListDB.get(i).getFirstName() + ")"));
-		}
+		for (int i = 0; i < userListDB.size(); i++) model.addElement(new JCheckBox(userListDB.get(i).getPseudo() + " (" + userListDB.get(i).getFirstName() + ")"));
 
 		JScrollPane listPeoplePan = new JScrollPane(new JCheckBoxList(model));
 
@@ -100,25 +97,11 @@ public class PopUpAddDiscussion extends JFrame {
 		p.setBackground(bg);
 	}
 
+	/**
+	 * This method enable to close the popup window
+	 */
 	public void exitJFrame() {
 		this.dispose();
-	}
-
-	public List<UUID> getUserInChatRoom() {
-		List<UUID> list = new ArrayList<>();
-		List<User> userListDB = DataBaseManager.getAllUsers();
-
-		for (int i = 0; i < this.model.getSize(); i++) {
-			if (this.model.get(i).isSelected()) {
-				System.out.println(userListDB.get(i).getPseudo());
-				list.add(userListDB.get(i).getId());
-//				this.selectedUUID.add(Constants.allUsers.get(i).getId().toString());
-//				// ICI IL Y A UNE ERREUR
-//				this.listDiscussionModel.addElement(new ChatRoom(UUID.fromString(selectedUUID.get(i)), "Discussion" + i));
-			}
-		}
-
-		return list;
 	}
 
 	/**
@@ -130,7 +113,7 @@ public class PopUpAddDiscussion extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ChatRoom chatRoom = new ChatRoom(UUID.randomUUID(), "Discussion" + (DataBaseManager.getAllChatRoom().size() + 1));
 				DataBaseManager.sendChatRoomToDB(chatRoom);
-				List<UUID> usersInChatRoom = getUserInChatRoom();
+				List<UUID> usersInChatRoom = controller.getUserInChatRoom();
 				for (int i = 0; i < usersInChatRoom.size(); i++) DataBaseManager.sendUserRoomToDB(new UserRoom(usersInChatRoom.get(i), chatRoom.getIdChatRoom()));
 				Constants.client.addNewDiscussion();
 				exitJFrame();
@@ -138,10 +121,9 @@ public class PopUpAddDiscussion extends JFrame {
 		});
 	}
 
-	public DefaultListModel getListDiscussionModel() {
-		return this.listDiscussionModel;
-	}
-
+	/**
+	 * This method setup the cancel button
+	 */
 	private void setCancelButton() {
 		this.cancelButton.addActionListener(new ActionListener() {
 			@Override
@@ -149,10 +131,6 @@ public class PopUpAddDiscussion extends JFrame {
 				exitJFrame();
 			}
 		});
-	}
-
-	public ArrayList<String> getUUIDList() {
-		return this.selectedUUID;
 	}
 
 	@SuppressWarnings("serial")
@@ -196,4 +174,23 @@ public class PopUpAddDiscussion extends JFrame {
 			}
 		}
 	}
+
+
+	public ArrayList<String> getUUIDList() {
+		return controller.getSelectedUUID();
+	}
+	public DefaultListModel getListDiscussionModel() {
+		return listDiscussionModel;
+	}
+	public JButton getAddButton() { return addButton; }
+	public void setAddButton(JButton addButton) { this.addButton = addButton; }
+	public JButton getCancelButton() { return cancelButton; }
+	public void setCancelButton(JButton cancelButton) { this.cancelButton = cancelButton; }
+	public JPanel getContainer() { return container; }
+	public void setContainer(JPanel container) { this.container = container; }
+	public DefaultListModel<JCheckBox> getModel() { return model; }
+	public void setModel(DefaultListModel<JCheckBox> model) { this.model = model; }
+	public void setListDiscussionModel(DefaultListModel listDiscussionModel) { this.listDiscussionModel = listDiscussionModel; }
+	public PopUpAddDiscussionController getController() { return controller; }
+	public void setController(PopUpAddDiscussionController controller) { this.controller = controller; }
 }

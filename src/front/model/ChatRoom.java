@@ -20,14 +20,8 @@ public class ChatRoom implements Serializable {
      * @param titleRoom Title of the room
      */
     public ChatRoom(UUID id, String titleRoom) {
-//        this.userList    = new ArrayList<>();
-//        this.messageList = new ArrayList<>();
-
-//        this.idChatRoom = UUID.randomUUID();
         this.idChatRoom = id;
         this.titleRoom  = titleRoom;
-//        this.userList.add(admin);
-//        this.messageList = new ArrayList<>();
     }
 
 
@@ -63,7 +57,10 @@ public class ChatRoom implements Serializable {
         this.idChatRoom = idChatRoom;
     }
 
-
+    /**
+     * Getter of the titleRoom
+     * @return
+     */
     public String getTitleRoom() {
         return titleRoom;
     }

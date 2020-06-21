@@ -9,7 +9,8 @@ import java.util.UUID;
 
 
 /**
- *
+ * <h1>Object DataBaseManager</h1>
+ * This class is for the database management
  */
 public class DataBaseManager {
     public static String url = "jdbc:postgresql://localhost:5432/postgres";
@@ -17,6 +18,9 @@ public class DataBaseManager {
     public static String passwd = "root";
     public static Connection conn;
 
+    /**
+     * Constructor of the class
+     */
     public DataBaseManager() {
         try {
             conn = DriverManager.getConnection(url, user, passwd);
@@ -25,12 +29,20 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * This method enable to get the singleton
+     * @return
+     */
     public static Connection getInstance() {
         if (conn == null) new DataBaseManager();
         return conn;
     }
 
 
+    /**
+     * Enable to send a user in the DB
+     * @param utilisateur
+     */
     public static void sendUserToDB(User utilisateur) {
         try {
             Class.forName("org.postgresql.Driver");
@@ -51,6 +63,10 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Enable to send a message in the DB
+     * @param message
+     */
     public static void sendMessageToDB(Message message) {
         try {
             Class.forName("org.postgresql.Driver");
@@ -70,6 +86,10 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Enable to send a chatroom in the DB
+     * @param chatRoom
+     */
     public static void sendChatRoomToDB(ChatRoom chatRoom) {
         try {
             Class.forName("org.postgresql.Driver");
@@ -87,6 +107,10 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Enable to send a user_room in the DB
+     * @param userRoom
+     */
     public static void sendUserRoomToDB(UserRoom userRoom) {
         try {
             Class.forName("org.postgresql.Driver");
@@ -104,6 +128,10 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Enable to get a user in the DB
+     * @return
+     */
     public static List<User> getAllUsers() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -136,6 +164,10 @@ public class DataBaseManager {
         return null;
     }
 
+    /**
+     * Enable to get a message in the DB
+     * @return
+     */
     public static List<Message> getAllMessage() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -167,6 +199,10 @@ public class DataBaseManager {
         return null;
     }
 
+    /**
+     * Enable to get a chatroom in the DB
+     * @return
+     */
     public static List<ChatRoom> getAllChatRoom() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -194,6 +230,10 @@ public class DataBaseManager {
         return null;
     }
 
+    /**
+     * Enable to get a user room in the DB
+     * @return
+     */
     public static List<UserRoom> getAllUserRoom() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -221,9 +261,9 @@ public class DataBaseManager {
         return null;
     }
 
-    public static void main(String[] args) {
-    }
-
+    /**
+     * Enable to delete a user in the DB
+     */
     public static void dropUsers() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -239,6 +279,9 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Enable to delete a chatroom in the DB
+     */
     public static void dropChatRooms() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -254,6 +297,9 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Enable to delete a message in the DB
+     */
     public static void dropMessages() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -269,6 +315,9 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Enable to delete a user room in the DB
+     */
     public static void dropUserRoom() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -284,6 +333,9 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * This method enable to prepulate the table with the basic data for example
+     */
     public static void prepopulateTable() {
         List<User> allUser = getAllUsers();
         List<ChatRoom> allChatRoom = getAllChatRoom();

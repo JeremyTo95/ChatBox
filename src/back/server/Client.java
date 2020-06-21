@@ -14,7 +14,6 @@ import java.net.Socket;
  * <h1>Object Client</h1>
  * This class creates the client of socket which communicate to the server
  */
-
 public class Client extends AbstractServer {
     private boolean isRunning;
     private Socket socket;
@@ -79,6 +78,9 @@ public class Client extends AbstractServer {
         }
     }
 
+    /**
+     * Send a signal on the server to talk about a new discussion
+     */
     public void addNewDiscussion() {
         try {
             output.writeObject(Constants.QUERY_ADD_NEW_DISCUSSION);
@@ -87,6 +89,10 @@ public class Client extends AbstractServer {
         }
     }
 
+    /**
+     * Enable to know if the client is running
+     * @return
+     */
     public boolean isRunning() {
         return isRunning;
     }

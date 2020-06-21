@@ -10,13 +10,6 @@ import java.util.UUID;
  * This class represents the message which are exanges on the chatroom
  */
 public class Message implements Serializable {
-//    vieux
-//    private UUID idMessage;
-//    private UUID idAuthor;
-//    private String content;
-//    private LocalDateTime date;
-
-    // new
     private UUID idMessage;
     private UUID idAuthor;
     private UUID idChatRoom;
@@ -150,6 +143,10 @@ public class Message implements Serializable {
     }
 
 
+    /**
+     * Getter of the chat room id
+     * @return
+     */
     public UUID getIdChatRoom() {
         return idChatRoom;
     }
