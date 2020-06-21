@@ -46,9 +46,9 @@ N.B. : il s'agit bien de la base de donnée "postgres" et non ChatBox comme sur 
 Les données seront toutes insérées directement depuis le java.
 
 ## Mise en place du JDBC
-* 2ème étape : Télécharger le driver JDBC.
+* Télécharger le driver JDBC.
   --> https://jdbc.postgresql.org/download/postgresql-42.2.14.jar
-* 3ème étape : mettre le .jar dans le classpath.
+* Mettre le .jar dans le classpath.
 
   --> Sur IntelliJ IDEA, avec le projet ouvert (cf. Section "Ouvrir le projet sur IntelliJ IDEA").
 
