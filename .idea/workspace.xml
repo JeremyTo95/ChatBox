@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="94e43f26-0eef-45ac-93eb-b69b6d62750f" name="Default Changelist" comment="enter data" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="onto" value="5d61d61f4c0d83e91e968b222ce42d14b05e672d" />
+  </component>
+  <component name="ProjectId" id="1dXIea19LxBlu5rnPDHF1newUbB" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../postgresql-42.2.14.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jerem\IdeaProjects\ChatBox\src\back\server" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="HomeView" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jerem\IdeaProjects\ChatBox\src\front" />
+      <recent name="C:\Users\jerem\IdeaProjects\ChatBox" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Connect">
+    <configuration name="Connect" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="back.db.Connect" />
+      <module name="ChatBox" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExecClient" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="back.server.ExecClient" />
+      <module name="ChatBox" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="back.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExecServer" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="back.server.ExecServer" />
+      <module name="ChatBox" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="back.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginPage" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="front.view.LoginPage" />
+      <module name="ChatBox" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="HomeView.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ChatBox" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ExecServer" />
+      <item itemvalue="Application.ExecClient" />
+      <item itemvalue="Application.LoginPage" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Connect" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Connect" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ExecServer" />
+        <item itemvalue="Application.ExecClient" />
+        <item itemvalue="Application.LoginPage" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="94e43f26-0eef-45ac-93eb-b69b6d62750f" name="Default Changelist" comment="" />
+      <created>1592565106104</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592565106104</updated>
+    </task>
+    <task id="LOCAL-00001" summary="first logic elements">
+      <created>1592565430399</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592565430399</updated>
+    </task>
+    <task id="LOCAL-00002" summary="last">
+      <created>1592570779943</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592570779943</updated>
+    </task>
+    <task id="LOCAL-00003" summary="first chat V0">
+      <created>1592599154029</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1592599154030</updated>
+    </task>
+    <task id="LOCAL-00004" summary="send message to Server">
+      <created>1592603884674</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1592603884674</updated>
+    </task>
+    <task id="LOCAL-00005" summary="version exploitable">
+      <created>1592610118780</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1592610118780</updated>
+    </task>
+    <task id="LOCAL-00006" summary="backup socket, can send message to everybody">
+      <created>1592654490153</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1592654490153</updated>
+    </task>
+    <task id="LOCAL-00007" summary="integration du code de Mostafa">
+      <created>1592655474030</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1592655474030</updated>
+    </task>
+    <task id="LOCAL-00008" summary="patch socket exec">
+      <created>1592658252825</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1592658252825</updated>
+    </task>
+    <task id="LOCAL-00009" summary="end login page">
+      <created>1592663933914</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1592663933914</updated>
+    </task>
+    <task id="LOCAL-00010" summary="javadoc V0">
+      <created>1592672938732</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1592672938732</updated>
+    </task>
+    <task id="LOCAL-00011" summary="debug closing socket">
+      <created>1592692425712</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1592692425712</updated>
+    </task>
+    <task id="LOCAL-00012" summary="patch UI disconnecting">
+      <created>1592693267219</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1592693267219</updated>
+    </task>
+    <task id="LOCAL-00013" summary="patch chatroom parallele, now we can send message in specific room">
+      <created>1592700036147</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1592700036147</updated>
+    </task>
+    <task id="LOCAL-00014" summary="screen management (clear and load messages)">
+      <created>1592729233549</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1592729233549</updated>
+    </task>
+    <task id="LOCAL-00015" summary="debug">
+      <created>1592729486182</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1592729486182</updated>
+    </task>
+    <task id="LOCAL-00016" summary="enter data">
+      <created>1592735066997</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1592735066997</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first logic elements" />
+    <MESSAGE value="last" />
+    <MESSAGE value="first tchat" />
+    <MESSAGE value="first chat V0" />
+    <MESSAGE value="send message to Server" />
+    <MESSAGE value="version exploitable" />
+    <MESSAGE value="backup socket, can send message to everybody" />
+    <MESSAGE value="integration du code de Mostafa" />
+    <MESSAGE value="patch socket exec" />
+    <MESSAGE value="end login page" />
+    <MESSAGE value="javadoc V0" />
+    <MESSAGE value="debug closing socket" />
+    <MESSAGE value="patch UI disconnecting" />
+    <MESSAGE value="patch chatroom parallele, now we can send message in specific room" />
+    <MESSAGE value="screen management (clear and load messages)" />
+    <MESSAGE value="debug" />
+    <MESSAGE value="enter data" />
+    <option name="LAST_COMMIT_MESSAGE" value="enter data" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592695198990">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592695198990" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1592734221376">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592734221376" />
+    <state x="743" y="414" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1592663769782">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="743" y="414" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592663769782" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592654936375">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592654936375" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592592797902" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1592729838322">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592729838322" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1592730358134">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592730358134" />
+    <state x="452" y="203" key="Git.Interactive.Rebase.Dialog" timestamp="1592729450866">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="452" y="203" key="Git.Interactive.Rebase.Dialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592729450866" />
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom" timestamp="1592734960675">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592734960675" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592588116814" />
+    <state width="1877" height="218" key="GridCell.Tab.0.center" timestamp="1592734960675">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="218" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592734960675" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592588116814" />
+    <state width="1877" height="218" key="GridCell.Tab.0.left" timestamp="1592734960674">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="218" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592734960674" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592588116814" />
+    <state width="1877" height="218" key="GridCell.Tab.0.right" timestamp="1592734960675">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="218" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592734960675" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592588116814" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1592688473555">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592688473555" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1592688473555">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592688473555" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1592688473555">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592688473555" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1592688473555">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592688473555" />
+    <state x="267" y="86" key="MergeDialog" timestamp="1592654554787">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="267" y="86" key="MergeDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592654554787" />
+    <state x="848" y="388" width="389" height="264" key="MultipleFileMergeDialog" timestamp="1592729510101">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="848" y="388" width="389" height="264" key="MultipleFileMergeDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592729510101" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1592730367286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592730367286" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1592567051110" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1592735123312">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592735123312" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592570784514" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592735108346">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592735108346" />
+    <state x="682" y="308" key="git4idea.merge.GitPullDialog" timestamp="1592729367621">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="682" y="308" key="git4idea.merge.GitPullDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592729367621" />
+    <state x="758" y="381" key="git4idea.rebase.GitRebaseDialog" timestamp="1592729443378">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="758" y="381" key="git4idea.rebase.GitRebaseDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592729443378" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="socket" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
