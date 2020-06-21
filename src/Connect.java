@@ -1,49 +1,45 @@
+import front.model.User;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
 
 
 public class Connect
 {
-
-    /**
-     *
-     * @param args
-     */
-
     public static void main(String[] args) {
         try {
             Class.forName("org.postgresql.Driver");
-
             String url = "jdbc:postgresql://localhost:5432/ChatBox";
             String user = "postgres";
             String passwd = "He9Z4EmJu2640&";
 
             Connection conn = DriverManager.getConnection(url, user, passwd);
-
-            //Création d'un objet Statement
             Statement state = conn.createStatement();
-
-            //L'objet ResultSet contient le résultat de la requête SQL
+            UUID idUser;
+            idUser = UUID.randomUUID();
             ResultSet result = state.executeQuery("SELECT * FROM Users");
-
-            //On récupère les MetaData
             ResultSetMetaData resultMeta = result.getMetaData();
 
-            System.out.println("\n**********************************");
-            //On affiche le nom des colonnes
-            for(int i = 1; i <= resultMeta.getColumnCount(); i++)
-                System.out.print("\t" + resultMeta.getColumnName(i).toUpperCase() + "\t *");
-
-            System.out.println("\n**********************************");
-
-            while(result.next())
-            {
-                for(int i = 1; i <= resultMeta.getColumnCount(); i++)
-                System.out.print("\t" + result.getObject(i).toString() + "\t |");
-                System.out.println("\n---------------------------------");
+            List<User> userList = new ArrayList();
+            String lastname, firstname, pseudo, id, password;
+            while(result.next()){
+                id = result.getObject(1).toString();
+                lastname = result.getObject(2).toString();
+                firstname = result.getObject(3).toString();
+                pseudo = result.getObject(4).toString();
+                password = result.getObject(5).toString();
+                userList.add(new User(id, firstname, lastname, pseudo, password));
             }
 
-           //String strSQL =
-           //state.executeUpdate( strSQL );
+
+            System.out.println(Arrays.toString(userList.toArray()));
+
+            //TODO: récupérer / extraire userList (= list de tous les user)
+            //TODO: écrire les fonctions en JAVA pour avoir les info en fonction de paramètre
+
             result.close();
             state.close();
             /**/
@@ -51,6 +47,5 @@ public class Connect
         catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
