@@ -25,9 +25,21 @@ Jeremy TOURARI
 Copier le lien et cliquer sur "Ouvrir dans une nouvelle fenêtre", fermer la première
 Vous avez ainsi accès au projet sur votre IDE !
 
-## Mise en place de la base de donnée en local
+## Installation du serveur en local
 * 1ère étape : Télécharger postgreSQL
   --> https://get.enterprisedb.com/postgresql/postgresql-12.3-1-windows-x64.exe
+* 2ème étape : lancer l'installation
+* 3ème étape : suivre les étapes d'installation :
+  --> Spécifier le mot de passe : He9Z4EmJu2640&
+  --> Laisser le port 5432
+Terminer l'installation
+Lorsque l'installation s'est terminée :
+* 4ème étape : cliquer sur la touche windows du clavier
+* 5ème étape : rester sur le menu démarrer et descendre jusqu'à la lettre P
+
+<img src="https://raw.githubusercontent.com/JeremyTo95/ChatBox/master/img/Recuperation_projet_git.png" width="275">
+
+## Mise en place de la base de donnée en local
 * 2ème étape : Télécharger le driver JDBC
   --> https://jdbc.postgresql.org/download/postgresql-42.2.14.jar
 * 3ème étape : mettre le .jar dans le classpath
