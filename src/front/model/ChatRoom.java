@@ -71,4 +71,9 @@ public class ChatRoom implements Serializable {
         this.idChatRoom = idChatRoom;
     }
 
+
+    public String getTitleRoom() {
+        return titleRoom;
+    }
+
 }

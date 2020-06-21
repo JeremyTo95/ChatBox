@@ -33,7 +33,7 @@ public class Constants {
      * This methode initialize all the user
      * @return
      */
-    public static List<User>initAllUser() {
+    public static List<User> initAllUser() {
         List userList = new ArrayList();
 
         userList.add(new User("6952bd59-63e0-47ab-b0f1-034465b8efe8", "Jérémy", "Tourari", "Sparta", "password"));
